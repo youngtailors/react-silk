@@ -2,12 +2,13 @@
   "name": "react-silk",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "lib/react-silk.js",
-  "module": "lib/react-silk.es.js",
+  "main": "dist/react-silk.js",
+  "module": "dist/react-silk.es.js",
   "author": "Young Tailors <team@procolla.com>",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "dev": "rollup -cw"
   },
   "peerDependencies": {
     "react": "^16.7.0",

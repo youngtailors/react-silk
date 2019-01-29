@@ -1,0 +1,38 @@
+{
+  "name": "react-silk-docs",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.0.0",
+  "author": "Young Tailors <team@procolla.com>",
+  "dependencies": {
+    "gatsby": "^2.0.76",
+    "gatsby-image": "^2.0.20",
+    "gatsby-plugin-manifest": "^2.0.9",
+    "gatsby-plugin-offline": "^2.0.16",
+    "gatsby-plugin-react-helmet": "^3.0.2",
+    "gatsby-plugin-react-native-web": "^2.0.0-beta.0",
+    "gatsby-plugin-sharp": "^2.0.14",
+    "gatsby-plugin-typescript": "^2.0.4",
+    "gatsby-source-filesystem": "^2.0.8",
+    "gatsby-transformer-sharp": "^2.1.8",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-helmet": "^5.2.0",
+    "react-native-web": "^0.10.0-alpha.3",
+    "react-silk": "^0.0.0"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "start": "npm run develop",
+    "format": "prettier --write \"src/**/*.js\"",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+  },
+  "devDependencies": {
+    "@types/react-helmet": "^5.0.8",
+    "babel-plugin-react-native-web": "^0.9.13",
+    "prettier": "^1.15.2"
+  }
+}
