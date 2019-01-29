@@ -1,5 +1,5 @@
 import path from 'path'
-import typescript from 'rollup-plugin-typescript'
+import typescript from 'rollup-plugin-typescript2'
 import { uglify } from 'rollup-plugin-uglify'
 
 const reslv = p => path.resolve(__dirname, p)

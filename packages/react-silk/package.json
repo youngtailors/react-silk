@@ -5,6 +5,10 @@
   "main": "dist/react-silk.js",
   "module": "dist/react-silk.es.js",
   "author": "Young Tailors <team@procolla.com>",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup -c",
@@ -13,5 +17,8 @@
   "peerDependencies": {
     "react": "^16.7.0",
     "react-native-web": "^0.10.0-alpha.3"
+  },
+  "devDependencies": {
+    "rollup-plugin-typescript2": "^0.19.2"
   }
 }
