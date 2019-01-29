@@ -1,7 +1,29 @@
-import { Heading } from './components/Heading'
+import {
+  Text,
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
+} from './components/Text'
 
-export { Heading }
+export {
+  Text,
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
+}
 
 export default {
-  Heading,
+  Text,
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
 }

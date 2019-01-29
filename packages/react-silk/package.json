@@ -20,5 +20,8 @@
   },
   "devDependencies": {
     "rollup-plugin-typescript2": "^0.19.2"
+  },
+  "dependencies": {
+    "react-art": "^16.7.0"
   }
 }

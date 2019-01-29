@@ -13,7 +13,6 @@
     "gatsby-plugin-react-native-web": "^2.0.0-beta.0",
     "gatsby-plugin-sharp": "^2.0.14",
     "gatsby-plugin-typescript": "^2.0.4",
-    "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-sharp": "^2.1.8",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
