@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "declaration": true,
+    "declarationDir": "dist",
     "declarationMap": true,
     "sourceMap": true,
     "strict": true,
@@ -13,7 +14,8 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
-    "preserveConstEnums": true
+    "preserveConstEnums": true,
+    "jsx": "react"
   },
   "exclude": ["node_modules"]
 }
