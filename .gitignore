@@ -120,3 +120,5 @@ typings/
 .history
 
 dist
+
+.rpt2_cache
