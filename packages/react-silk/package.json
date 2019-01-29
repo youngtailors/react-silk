@@ -1,0 +1,16 @@
+{
+  "name": "react-silk",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "lib/react-silk.js",
+  "module": "lib/react-silk.es.js",
+  "author": "Young Tailors <team@procolla.com>",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "rollup -c"
+  },
+  "peerDependencies": {
+    "react": "^16.7.0",
+    "react-native-web": "^0.10.0-alpha.3"
+  }
+}
