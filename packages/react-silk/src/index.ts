@@ -11,6 +11,8 @@ import {
   Button,
 } from './components/Button'
 
+import * as Colors from './components/Colors'
+
 export {
   Text,
   Heading1,
@@ -20,6 +22,7 @@ export {
   Heading5,
   Heading6,
   Button,
+  Colors,
 }
 
 export default {
@@ -31,4 +34,5 @@ export default {
   Heading5,
   Heading6,
   Button,
+  Colors,
 }
