@@ -7,6 +7,9 @@ import {
   Heading5,
   Heading6,
 } from './components/Text'
+import {
+  Button,
+} from './components/Button'
 
 export {
   Text,
@@ -16,6 +19,7 @@ export {
   Heading4,
   Heading5,
   Heading6,
+  Button,
 }
 
 export default {
@@ -26,4 +30,5 @@ export default {
   Heading4,
   Heading5,
   Heading6,
+  Button,
 }
