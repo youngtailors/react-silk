@@ -1,4 +1,8 @@
 {
   "files": [],
-  "references": [{ "path": "react-silk-ui" }, { "path": "react-silk-docs" }]
+  "references": [
+    { "path": "react-silk-ui" },
+    { "path": "react-silk-form" },
+    { "path": "react-silk-docs" }
+  ]
 }
