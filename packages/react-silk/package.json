@@ -12,7 +12,8 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup -c",
-    "dev": "rollup -cw"
+    "dev": "rollup -cw",
+    "lint": "eslint --ext .ts,.tsx ."
   },
   "peerDependencies": {
     "react": "^16.7.0",

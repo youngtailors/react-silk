@@ -1,10 +1,5 @@
 import * as React from 'react'
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Colors from './Colors'
 import sharedStyles from './sharedStyles'
 
@@ -21,7 +16,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   disabledButton: {
-    opacity: .6,
+    opacity: 0.6,
   },
   primaryButton: {
     backgroundColor: Colors.primary,
@@ -102,16 +97,35 @@ const lightVariants = ['light', 'link']
 const isLight = (variant: string) => !~lightVariants.indexOf(variant)
 
 export interface ButtonProps {
-  children: String;
-  onPress?: void;
-  ghost?: boolean;
-  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'link';
-  disabled?: boolean;
-  block?: boolean;
+  children: String
+  onPress?: void
+  ghost?: boolean
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'info'
+    | 'light'
+    | 'dark'
+    | 'link'
+  disabled?: boolean
+  block?: boolean
 }
 
-export const Button = ({ children, onPress, variant, disabled, block, ghost }: ButtonProps) => {
-  const buttonStyles = [styles.buttonBorder, (styles as any)[`${variant}${ghost ? 'Ghost' : ''}Button`]]
+export const Button = ({
+  children,
+  onPress,
+  variant,
+  disabled,
+  block,
+  ghost,
+}: ButtonProps) => {
+  const buttonStyles = [
+    styles.buttonBorder,
+    (styles as any)[`${variant}${ghost ? 'Ghost' : ''}Button`],
+  ]
   const textStyles = []
   const isLightVariant = isLight(variant as string)
   if (ghost && isLightVariant) {
@@ -125,9 +139,7 @@ export const Button = ({ children, onPress, variant, disabled, block, ghost }: B
 
   const node = (
     <View style={[styles.button, ...buttonStyles]}>
-      <Text style={textStyles}>
-        {children}
-      </Text>
+      <Text style={textStyles}>{children}</Text>
     </View>
   )
   const containerStyles = []
@@ -135,17 +147,9 @@ export const Button = ({ children, onPress, variant, disabled, block, ghost }: B
     containerStyles.push(styles.containerNatural)
   }
   if (onPress && disabled) {
-    return (
-      <TouchableOpacity style={containerStyles}>
-        {node}
-      </TouchableOpacity>
-    )
+    return <TouchableOpacity style={containerStyles}>{node}</TouchableOpacity>
   }
-  return (
-    <View style={containerStyles}>
-      {node}
-    </View>
-  )
+  return <View style={containerStyles}>{node}</View>
 }
 
 Button.defaultProps = {

@@ -7,9 +7,7 @@ import {
   Heading5,
   Heading6,
 } from './components/Text'
-import {
-  Button,
-} from './components/Button'
+import { Button } from './components/Button'
 
 import * as Colors from './components/Colors'
 

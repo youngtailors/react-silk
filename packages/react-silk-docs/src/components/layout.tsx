@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import Header from './header'
 import './layout.css'
 
-const Layout = ({ children }) => (
+const Layout: React.FunctionComponent = ({ children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -28,9 +28,7 @@ const Layout = ({ children }) => (
           }}
         >
           {children}
-          <footer>
-            © {new Date().getFullYear()}, Young Tailors
-          </footer>
+          <footer>© {new Date().getFullYear()}, Young Tailors</footer>
         </div>
       </>
     )}
