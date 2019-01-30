@@ -2,7 +2,7 @@ import * as React from 'react'
 import ReactNative, { StyleSheet } from 'react-native'
 
 export interface Props {
-  style: any,
+  style?: ReactNative.StyleProp<ReactNative.TextStyle>
 }
 
 const styles = StyleSheet.create({
@@ -32,30 +32,60 @@ const styles = StyleSheet.create({
   },
 })
 
-export const Text = ({ style, ...props }: Props) => (
+export const Text: React.FunctionComponent<Props> = ({ style, ...props }) => (
   <ReactNative.Text style={[styles.text, style]} {...props} />
 )
 
-export function Heading1({ style, ...props }: Props) {
-  return <ReactNative.Text style={[styles.baseText, styles.h1, style]} {...props} />
+export const Heading1: React.FunctionComponent<Props> = ({
+  style,
+  ...props
+}) => {
+  return (
+    <ReactNative.Text style={[styles.baseText, styles.h1, style]} {...props} />
+  )
 }
 
-export function Heading2({ style, ...props }: Props) {
-  return <ReactNative.Text style={[styles.baseText, styles.h1, style]} {...props} />
+export const Heading2: React.FunctionComponent<Props> = ({
+  style,
+  ...props
+}) => {
+  return (
+    <ReactNative.Text style={[styles.baseText, styles.h1, style]} {...props} />
+  )
 }
 
-export function Heading3({ style, ...props }: Props) {
-  return <ReactNative.Text style={[styles.baseText, styles.h3, style]} {...props} />
+export const Heading3: React.FunctionComponent<Props> = ({
+  style,
+  ...props
+}) => {
+  return (
+    <ReactNative.Text style={[styles.baseText, styles.h3, style]} {...props} />
+  )
 }
 
-export function Heading4({ style, ...props }: Props) {
-  return <ReactNative.Text style={[styles.baseText, styles.h4, style]} {...props} />
+export const Heading4: React.FunctionComponent<Props> = ({
+  style,
+  ...props
+}) => {
+  return (
+    <ReactNative.Text style={[styles.baseText, styles.h4, style]} {...props} />
+  )
 }
 
-export function Heading5({ style, ...props }: Props) {
-  return <ReactNative.Text style={[styles.baseText, styles.h5, style]} {...props} />
+export const Heading5: React.FunctionComponent<Props> = ({
+  style,
+  ...props
+}) => {
+  return (
+    <ReactNative.Text style={[styles.baseText, styles.h5, style]} {...props} />
+  )
 }
 
-export function Heading6({ style, ...props }: Props) {
-  return <ReactNative.Text style={[styles.baseText, styles.h6, style]} {...props} />
+export const Heading6: React.FunctionComponent<Props> = ({
+  style,
+  ...props
+}) => {
+  return (
+    <ReactNative.Text style={[styles.baseText, styles.h6, style]} {...props} />
+  )
 }
