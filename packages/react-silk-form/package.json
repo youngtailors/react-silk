@@ -1,9 +1,9 @@
 {
-  "name": "react-silk-ui",
+  "name": "react-silk-form",
   "version": "0.1.1",
   "license": "MIT",
-  "main": "dist/react-silk.js",
-  "module": "dist/react-silk.es.js",
+  "main": "dist/react-silk-form.js",
+  "module": "dist/react-silk-form.es.js",
   "author": "Young Tailors <team@procolla.com>",
   "types": "dist/index.d.ts",
   "files": [
@@ -12,16 +12,11 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup -c",
-    "dev": "rollup -cw",
-    "lint": "eslint --ext .ts,.tsx ."
+    "dev": "rollup -cw"
   },
   "peerDependencies": {
     "react": "^16.7.0",
     "react-art": "^16.7.0",
     "react-native-web": "^0.10.0-alpha.3"
-  },
-  "devDependencies": {
-    "rollup-plugin-typescript2": "^0.19.2"
-  },
-  "gitHead": "235fc36033bd03bd6d4de433c533992bce887ae0"
+  }
 }
