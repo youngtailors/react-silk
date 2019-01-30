@@ -50,7 +50,7 @@ export const Heading2: React.FunctionComponent<Props> = ({
   ...props
 }) => {
   return (
-    <ReactNative.Text style={[styles.baseText, styles.h1, style]} {...props} />
+    <ReactNative.Text style={[styles.baseText, styles.h2, style]} {...props} />
   )
 }
 
