@@ -16,6 +16,7 @@
     "gatsby-transformer-sharp": "^2.1.8",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
+    "react-art": "^16.7.0",
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
     "react-native-web": "^0.10.0-alpha.3",
