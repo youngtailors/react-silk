@@ -4,12 +4,12 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run --parallel build",
-    "build:lib": "lerna run --parallel --scope *-silk build",
+    "build:lib": "lerna run --parallel --scope *-silk-ui build",
     "build:docs": "lerna run --parallel --scope *-silk-docs build",
     "dev": "lerna run --parallel dev",
     "clean": "rimraf packages/**/dist",
-    "prepublish": "yarn build",
-    "publish": "lerna publish"
+    "prebump": "yarn build",
+    "bump": "lerna publish"
   },
   "files": [
     "public"

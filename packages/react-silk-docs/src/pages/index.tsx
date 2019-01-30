@@ -11,7 +11,7 @@ import {
   Heading5,
   Heading6,
   Text,
-} from 'react-silk'
+} from 'react-silk-ui'
 
 const IndexPage = () => (
   <Layout>

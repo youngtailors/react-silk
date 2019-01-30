@@ -20,7 +20,7 @@
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
     "react-native-web": "^0.10.0-alpha.3",
-    "react-silk": "^0.1.0"
+    "react-silk-ui": "^0.1.0"
   },
   "license": "MIT",
   "scripts": {

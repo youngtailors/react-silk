@@ -1,5 +1,5 @@
 {
-  "name": "react-silk",
+  "name": "react-silk-ui",
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/react-silk.js",
@@ -21,5 +21,6 @@
   },
   "devDependencies": {
     "rollup-plugin-typescript2": "^0.19.2"
-  }
+  },
+  "gitHead": "235fc36033bd03bd6d4de433c533992bce887ae0"
 }
