@@ -11,7 +11,13 @@ export interface Prop {
   meta?: any
 }
 
-function SEO({ description, lang, meta, keywords, title }: Prop) {
+const SEO: React.FunctionComponent<Prop> = ({
+  description,
+  lang,
+  meta,
+  keywords = [],
+  title,
+}) => {
   return (
     <StaticQuery
       query={detailsQuery}
@@ -79,14 +85,6 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [],
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
 }
 
 export default SEO
