@@ -1,9 +1,9 @@
 {
-  "name": "react-silk-ui",
+  "name": "react-silk-form",
   "version": "0.1.1",
   "license": "MIT",
-  "main": "dist/react-silk-ui.js",
-  "module": "dist/react-silk-ui.es.js",
+  "main": "dist/react-silk-form.js",
+  "module": "dist/react-silk-form.es.js",
   "author": "Young Tailors <team@procolla.com>",
   "types": "dist/index.d.ts",
   "files": [
@@ -12,8 +12,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup -c",
-    "dev": "rollup -cw",
-    "lint": "eslint --ext .ts,.tsx ."
+    "dev": "rollup -cw"
   },
   "peerDependencies": {
     "react": "^16.7.0",

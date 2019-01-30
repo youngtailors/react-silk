@@ -11,11 +11,11 @@ export default [
     output: [
       {
         format: 'es',
-        file: reslv('dist/react-silk-ui.es.js'),
+        file: reslv('dist/react-silk-form.es.js'),
       },
       {
         format: 'cjs',
-        file: reslv('dist/react-silk-ui.common.js'),
+        file: reslv('dist/react-silk-form.common.js'),
         exports: 'named',
       },
     ],
