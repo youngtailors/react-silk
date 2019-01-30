@@ -15,5 +15,6 @@ module.exports = {
     'one-var': 'off',
     'typescript/no-var-requires': 'off',
     'typescript/interface-name-prefix': 'off',
+    'no-bitwise': 'off',
   },
 }
