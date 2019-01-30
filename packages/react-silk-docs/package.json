@@ -2,7 +2,7 @@
   "name": "react-silk-docs",
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "Young Tailors <team@procolla.com>",
   "dependencies": {
     "gatsby": "^2.0.76",
@@ -20,7 +20,7 @@
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
     "react-native-web": "^0.10.0-alpha.3",
-    "react-silk": "^0.0.0"
+    "react-silk": "^0.1.0"
   },
   "license": "MIT",
   "scripts": {

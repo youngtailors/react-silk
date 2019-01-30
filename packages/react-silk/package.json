@@ -1,6 +1,6 @@
 {
   "name": "react-silk",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "main": "dist/react-silk.js",
   "module": "dist/react-silk.es.js",
@@ -16,8 +16,8 @@
   },
   "peerDependencies": {
     "react": "^16.7.0",
-    "react-native-web": "^0.10.0-alpha.3",
-    "react-art": "^16.7.0"
+    "react-art": "^16.7.0",
+    "react-native-web": "^0.10.0-alpha.3"
   },
   "devDependencies": {
     "rollup-plugin-typescript2": "^0.19.2"
