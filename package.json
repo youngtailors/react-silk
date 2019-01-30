@@ -7,7 +7,9 @@
     "build:lib": "lerna run --parallel --scope *-silk build",
     "build:docs": "lerna run --parallel --scope *-silk-docs build",
     "dev": "lerna run --parallel dev",
-    "clean": "rimraf packages/**/dist"
+    "clean": "rimraf packages/**/dist",
+    "prepublish": "yarn build",
+    "publish": "lerna publish"
   },
   "devDependencies": {
     "@types/node": "^10.12.19",
