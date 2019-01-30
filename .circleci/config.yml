@@ -10,6 +10,9 @@ jobs:
           name: Installing dependencies
           command: yarn install
       - run:
+          name: Run lint
+          command: yarn lint
+      - run:
           name: Build library
           command: yarn build:lib
       - run:
