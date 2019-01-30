@@ -13,6 +13,7 @@
     "@types/react-native": "^0.57.32",
     "lerna": "^3.10.7",
     "react": "^16.7.0",
+    "react-art": "^16.7.0",
     "react-native-web": "^0.10.0-alpha.3",
     "rimraf": "^2.6.3",
     "rollup": "^1.1.2",
