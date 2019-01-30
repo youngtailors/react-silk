@@ -9313,6 +9313,7 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
 react-art@^16.7.0:
   version "16.7.0"
   resolved "https://registry.yarnpkg.com/react-art/-/react-art-16.7.0.tgz#e06943f4e939c1ebf14632ff45adb8e1a8b77ff5"
+  integrity sha512-T6iyUFmqJegwgE1Kg4JQa7S/qf79RFxEXvbHeukiC1QgaETwKY7L2HO4D5gT9khowJmiNh0xN2b61ak7N4D6yQ==
   dependencies:
     art "^0.10.1"
     create-react-class "^15.6.2"
