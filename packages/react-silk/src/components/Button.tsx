@@ -5,9 +5,11 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native'
+import Colors from './Colors'
+import sharedStyles from './sharedStyles'
 
 const styles = StyleSheet.create({
-  container: {
+  containerNatural: {
     alignSelf: 'flex-start',
   },
   button: {
@@ -18,38 +20,80 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
   },
+  disabledButton: {
+    opacity: .6,
+  },
   primaryButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: Colors.primary,
+    borderColor: Colors.primary,
   },
   secondaryButton: {
-    backgroundColor: '#6c757d',
+    backgroundColor: Colors.secondary,
+    borderColor: Colors.secondary,
   },
   successButton: {
-    backgroundColor: '#28a745',
+    backgroundColor: Colors.success,
+    borderColor: Colors.success,
   },
   dangerButton: {
-    backgroundColor: '#dc3545',
+    backgroundColor: Colors.danger,
+    borderColor: Colors.danger,
   },
   warningButton: {
-    backgroundColor: '#ffc107',
+    backgroundColor: Colors.warning,
+    borderColor: Colors.warning,
   },
   infoButton: {
-    backgroundColor: '#17a2b8',
+    backgroundColor: Colors.info,
+    borderColor: Colors.info,
   },
   lightButton: {
-    backgroundColor: '#f8f9fa',
+    backgroundColor: Colors.light,
+    borderColor: Colors.light,
   },
   darkButton: {
-    backgroundColor: '#343a40',
+    backgroundColor: Colors.dark,
+    borderColor: Colors.dark,
   },
   linkButton: {
-    backgroundColor: 'transparent',
+    backgroundColor: Colors.transparent,
+    borderColor: Colors.transparent,
+  },
+  primaryGhostButton: {
+    borderColor: Colors.primary,
+  },
+  secondaryGhostButton: {
+    borderColor: Colors.secondary,
+  },
+  successGhostButton: {
+    borderColor: Colors.success,
+  },
+  dangerGhostButton: {
+    borderColor: Colors.danger,
+  },
+  warningGhostButton: {
+    borderColor: Colors.warning,
+  },
+  infoGhostButton: {
+    borderColor: Colors.info,
+  },
+  lightGhostButton: {
+    borderColor: Colors.light,
+  },
+  darkGhostButton: {
+    borderColor: Colors.dark,
+  },
+  linkGhostButton: {
+    borderColor: Colors.transparent,
   },
   lightText: {
-    color: '#FFF',
+    color: Colors.white,
   },
   darkText: {
-    color: '#666',
+    color: Colors.black,
+  },
+  buttonBorder: {
+    borderWidth: 1,
   },
 })
 
@@ -62,34 +106,51 @@ export interface ButtonProps {
   onPress?: void;
   ghost?: boolean;
   variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'link';
+  disabled?: boolean;
+  block?: boolean;
 }
 
-export const Button = ({ children, onPress, variant }: ButtonProps) => {
-  const buttonStyle = (styles as any)[`${variant}Button`]
-  const textStyle = isLight(variant as string) ? styles.lightText : styles.darkText
+export const Button = ({ children, onPress, variant, disabled, block, ghost }: ButtonProps) => {
+  const buttonStyles = [styles.buttonBorder, (styles as any)[`${variant}${ghost ? 'Ghost' : ''}Button`]]
+  const textStyles = []
+  const isLightVariant = isLight(variant as string)
+  if (ghost && isLightVariant) {
+    textStyles.push((sharedStyles as any)[`${variant}Text`])
+  } else {
+    textStyles.push(isLightVariant ? styles.lightText : styles.darkText)
+  }
+  if (disabled) {
+    buttonStyles.push(styles.disabledButton)
+  }
+
   const node = (
-    <View style={[styles.button, buttonStyle]}>
-      <Text style={textStyle}>
+    <View style={[styles.button, ...buttonStyles]}>
+      <Text style={textStyles}>
         {children}
       </Text>
     </View>
   )
-  if (onPress) {
+  const containerStyles = []
+  if (!block) {
+    containerStyles.push(styles.containerNatural)
+  }
+  if (onPress && disabled) {
     return (
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity style={containerStyles}>
         {node}
       </TouchableOpacity>
     )
   }
   return (
-    <View style={styles.container}>
+    <View style={containerStyles}>
       {node}
     </View>
   )
-  
 }
 
 Button.defaultProps = {
   variant: 'primary',
   ghost: false,
+  disabled: false,
+  block: false,
 }
