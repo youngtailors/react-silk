@@ -98,7 +98,7 @@ const isLight = (variant: string) => !~lightVariants.indexOf(variant)
 
 export interface ButtonProps {
   children: String
-  onPress?: void
+  onPress?: () => void
   ghost?: boolean
   variant?:
     | 'primary'
@@ -146,8 +146,12 @@ export const Button = ({
   if (!block) {
     containerStyles.push(styles.containerNatural)
   }
-  if (onPress && disabled) {
-    return <TouchableOpacity style={containerStyles}>{node}</TouchableOpacity>
+  if (onPress && !disabled) {
+    return (
+      <TouchableOpacity onPress={onPress} style={containerStyles}>
+        {node}
+      </TouchableOpacity>
+    )
   }
   return <View style={containerStyles}>{node}</View>
 }

@@ -8,7 +8,7 @@ import {
   Heading6,
 } from './components/Text'
 import { Button } from './components/Button'
-
+import { Modal } from './components/Modal'
 import * as Colors from './components/Colors'
 
 export {
@@ -21,6 +21,7 @@ export {
   Heading6,
   Button,
   Colors,
+  Modal,
 }
 
 export default {
@@ -33,4 +34,5 @@ export default {
   Heading6,
   Button,
   Colors,
+  Modal,
 }
