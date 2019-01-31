@@ -4,7 +4,7 @@ import Layout from '../../components/Layout'
 import SEO from '../../components/seo'
 import Anchors from '../../components/Anchors'
 
-const ComponentsPage = ({ children }) => (
+const ComponentsPage: React.FunctionComponent = ({ children }) => (
   <Layout>
     <SEO title="Components" keywords={[`gatsby`, `application`, `react`]} />
     <div className="row">
