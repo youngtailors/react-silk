@@ -10,4 +10,6 @@ export default {
   transparent: 'transparent',
   white: '#FFF',
   black: '#555',
+  gray: '#a6a6a6',
+  smokeWhite: '#f4f4f4',
 }

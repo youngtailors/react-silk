@@ -9,6 +9,7 @@ import {
 } from './components/Text'
 import { Button } from './components/Button'
 import { Modal } from './components/Modal'
+import { Input } from './components/Input'
 import * as Colors from './components/Colors'
 
 export {
@@ -22,6 +23,7 @@ export {
   Button,
   Colors,
   Modal,
+  Input,
 }
 
 export default {
@@ -35,4 +37,5 @@ export default {
   Button,
   Colors,
   Modal,
+  Input,
 }
