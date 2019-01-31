@@ -24,5 +24,11 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-typescript',
     'gatsby-plugin-react-native-web',
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Add any options here
+      },
+    },
   ],
 }
