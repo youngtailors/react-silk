@@ -10,6 +10,7 @@ import {
 import { Button } from './components/Button'
 import { Modal } from './components/Modal'
 import { Input } from './components/Input'
+import { Checkbox } from './components/Checkbox'
 import * as Colors from './components/Colors'
 
 export {
@@ -24,6 +25,7 @@ export {
   Colors,
   Modal,
   Input,
+  Checkbox,
 }
 
 export default {
@@ -38,4 +40,5 @@ export default {
   Colors,
   Modal,
   Input,
+  Checkbox,
 }
