@@ -11,8 +11,8 @@
     "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore .",
     "prebump": "yarn build",
     "bump": "lerna publish",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d packages/react-silk-docs/public -b gh-pages"
+    "predeploy": "lerna run --parallel --scope *-silk-docs build:gh",
+    "deploy": "gh-pages -d packages/react-silk-docs/public"
   },
   "files": [
     "public"
