@@ -13,7 +13,11 @@
     "prebuild": "rimraf dist",
     "build": "rollup -c",
     "dev": "rollup -cw",
-    "lint": "eslint --ext .ts,.tsx ."
+    "lint": "eslint --ext .ts,.tsx .",
+    "test": "jest --config \"./config/jest.config.js\"",
+    "test:watch": "jest --watch --config \"./config/jest.config.js\"",
+    "test:coverage": "jest --coverage --config \"./config/jest.config.js\"",
+    "test:coverage-ci": "jest --ci --runInBand --coverage --config \"./config/jest.config.js\""
   },
   "peerDependencies": {
     "react": "^16.7.0",

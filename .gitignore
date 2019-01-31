@@ -122,3 +122,6 @@ typings/
 dist
 
 .rpt2_cache
+
+.idea
+.vscode
