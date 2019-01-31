@@ -15,5 +15,8 @@ export default () => (
     <NavItem>
       <Link to="/components/buttons">Buttons</Link>
     </NavItem>
+    <NavItem>
+      <Link to="/components/modals">Modals</Link>
+    </NavItem>
   </NavItems>
 )
