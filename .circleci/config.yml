@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.3
 jobs:
   build:
     docker:
@@ -12,6 +14,13 @@ jobs:
       - run:
           name: Run lint
           command: yarn lint
+      - run:
+          name: Run all tests with coverage
+          command: yarn test:coverage-ci
+      - codecov/upload:
+          file: ./packages/react-silk-ui/coverage/coverage-final.json
+      - codecov/upload:
+          file: ./packages/react-silk-form/coverage/coverage-final.json
       - run:
           name: Build library
           command: yarn build:lib

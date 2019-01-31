@@ -12,7 +12,11 @@
     "prebump": "yarn build",
     "bump": "lerna publish",
     "predeploy": "lerna run --parallel --scope *-silk-docs build:gh",
-    "deploy": "gh-pages -d packages/react-silk-docs/public"
+    "deploy": "gh-pages -d packages/react-silk-docs/public",
+    "test": "lerna run --parallel test",
+    "test:coverage": "lerna run test:coverage",
+    "test:coverage-ci": "lerna run --parallel test:coverage-ci",
+    "test:watch": "lerna run --parallel test:watch"
   },
   "files": [
     "public"
@@ -26,6 +30,7 @@
     "linters": {
       "*.{ts,tsx}": [
         "yarn lint --fix",
+        "yarn test",
         "git add"
       ],
       "*.{json,md}": [
@@ -53,7 +58,12 @@
     "rimraf": "^2.6.3",
     "rollup": "^1.1.2",
     "rollup-plugin-typescript2": "^0.19.2",
-    "typescript": "~3.1.1"
+    "typescript": "~3.1.1",
+    "@types/jest": "^23.3.13",
+    "@types/react-test-renderer": "^16.0.3",
+    "jest": "^23.6.0",
+    "react-test-renderer": "^16.7.0",
+    "ts-jest": "^23.10.5"
   },
   "workspaces": [
     "packages/*"
