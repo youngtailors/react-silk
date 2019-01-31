@@ -26,8 +26,10 @@ export interface Props {
   toggle: () => void
   isOpen: boolean
   children: any
+  style: any
 }
-export const Modal = ({ toggle, isOpen, children }: Props) => {
+
+export const Modal = ({ toggle, isOpen, children, style }: Props) => {
   if (!isOpen) {
     return null
   }
@@ -49,7 +51,7 @@ export const Modal = ({ toggle, isOpen, children }: Props) => {
     >
       <View style={styles.container}>
         <Hitbox onPress={toggle} />
-        <View style={styles.modal}>
+        <View style={[styles.modal, style]}>
           <View style={styles.body}>{children}</View>
         </View>
       </View>
