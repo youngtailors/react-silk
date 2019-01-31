@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^5.0.8",
+    "@types/styled-components": "^4.1.6",
     "babel-plugin-react-native-web": "^0.9.13",
     "prettier": "^1.15.2"
   }

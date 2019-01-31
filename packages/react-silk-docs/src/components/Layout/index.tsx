@@ -21,7 +21,7 @@ const Layout: React.FunctionComponent = ({ children }) => (
     render={data => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div className="container-fluid">{children}</div>
+        <div className="container">{children}</div>
         <Footer />
       </>
     )}
