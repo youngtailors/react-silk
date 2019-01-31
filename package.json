@@ -10,7 +10,9 @@
     "clean": "rimraf packages/**/dist",
     "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore .",
     "prebump": "yarn build",
-    "bump": "lerna publish"
+    "bump": "lerna publish",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d packages/react-silk-docs/public -b gh-pages"
   },
   "files": [
     "public"
@@ -41,6 +43,7 @@
     "eslint-config-typescript-recommended": "^1.4.17",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-typescript": "1.0.0-rc.3",
+    "gh-pages": "^2.0.1",
     "husky": "^1.3.1",
     "lerna": "^3.10.7",
     "lint-staged": "^8.1.1",
