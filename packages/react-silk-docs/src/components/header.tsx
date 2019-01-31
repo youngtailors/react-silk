@@ -1,9 +1,12 @@
 import { Link } from 'gatsby'
 import React from 'react'
+import { StyleSheet } from 'react-native'
 import { Heading3 } from 'react-silk-ui'
 import styled from 'styled-components'
 
-const Nav = styled.nav`
+const Nav = styled.nav.attrs({
+  className: 'container',
+})`
   display: flex;
   align-items: center;
 `
@@ -20,19 +23,34 @@ const NavItem = styled.li`
   a {
     padding: 1rem;
     display: block;
+    color: #757575;
+    :hover {
+      text-decoration: none;
+      color: #111;
+    }
   }
 `
-const Brand = styled(Link)``
+const Brand = styled(Link)`
+  :hover {
+    text-decoration: none;
+  }
+`
+
+const styles = StyleSheet.create({
+  brand: {
+    color: '#111',
+  },
+})
 
 export interface Prop {
   siteTitle: string
 }
 
 const Header: React.FunctionComponent<Prop> = ({ siteTitle }) => (
-  <div className="container-fluid">
+  <div>
     <Nav>
       <Brand to="/">
-        <Heading3>{siteTitle}</Heading3>
+        <Heading3 style={styles.brand}>{siteTitle}</Heading3>
       </Brand>
       <NavItems>
         <NavItem>
