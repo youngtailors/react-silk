@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{196:function(e,t,a){"use strict";a.r(t);var n=a(0),l=a.n(n),o=a(214),r=a(212),s=a(211);t.default=function(){return l.a.createElement(r.a,null,l.a.createElement(s.a,{title:"Components",keywords:["gatsby","application","react"]}),l.a.createElement(o.k,null,"Display some sample projects here"))}}}]);
+//# sourceMappingURL=component---src-pages-showcase-tsx-489f28eb57f6df55c829.js.map
