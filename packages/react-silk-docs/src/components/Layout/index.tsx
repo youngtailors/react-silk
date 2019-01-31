@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
-import Header from './header'
-import './layout.css'
+import Header from '../header'
+import Footer from '../Footer'
+import './reboot.css'
+import './grid.css'
 
 const Layout: React.FunctionComponent = ({ children }) => (
   <StaticQuery
@@ -19,17 +21,8 @@ const Layout: React.FunctionComponent = ({ children }) => (
     render={data => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          {children}
-          <footer>© {new Date().getFullYear()}, Young Tailors</footer>
-        </div>
+        <div className="container-fluid">{children}</div>
+        <Footer />
       </>
     )}
   />

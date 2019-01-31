@@ -5,6 +5,8 @@
   "version": "0.1.1",
   "author": "Young Tailors <team@procolla.com>",
   "dependencies": {
+    "@types/styled-components": "^4.1.6",
+    "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.0.76",
     "gatsby-image": "^2.0.20",
     "gatsby-plugin-manifest": "^2.0.9",
@@ -12,6 +14,7 @@
     "gatsby-plugin-react-helmet": "^3.0.2",
     "gatsby-plugin-react-native-web": "^2.0.0-beta.0",
     "gatsby-plugin-sharp": "^2.0.14",
+    "gatsby-plugin-styled-components": "^3.0.4",
     "gatsby-plugin-typescript": "^2.0.4",
     "gatsby-transformer-sharp": "^2.1.8",
     "prop-types": "^15.6.2",
@@ -20,7 +23,8 @@
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
     "react-native-web": "^0.10.0-alpha.3",
-    "react-silk-ui": "^0.1.1"
+    "react-silk-ui": "^0.1.1",
+    "styled-components": "^4.1.3"
   },
   "license": "MIT",
   "scripts": {
