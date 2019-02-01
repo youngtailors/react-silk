@@ -21,6 +21,6 @@
   "peerDependencies": {
     "react": "^16.7.0",
     "react-art": "^16.7.0",
-    "react-native-web": "^0.10.0-alpha.3"
+    "react-native-web": "^0.10.0"
   }
 }
