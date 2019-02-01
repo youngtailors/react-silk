@@ -1,4 +1,4 @@
-version: 2.0
+version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.3
 jobs:
@@ -6,8 +6,6 @@ jobs:
     docker:
       - image: circleci/node:10
     working_directory: ~/repo
-    branches:
-      ignore: gh-pages
     steps:
       - checkout
       - run:
@@ -17,15 +15,31 @@ jobs:
           name: Run lint
           command: yarn lint
       - run:
+          name: Build library
+          command: yarn build:lib
+      - run:
+          name: Build documentation page
+          command: yarn build:docs
+  test:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - run:
           name: Run all tests with coverage
           command: yarn test:coverage-ci
       - codecov/upload:
           file: ./packages/react-silk-ui/coverage/coverage-final.json
       - codecov/upload:
           file: ./packages/react-silk-form/coverage/coverage-final.json
-      - run:
-          name: Build library
-          command: yarn build:lib
-      - run:
-          name: Build documentation page
-          command: yarn build:docs
+workflows:
+  build_and_test:
+    jobs:
+      - build:
+        branches:
+          ignore:
+            - gh-pages
+      - test:
+        branches:
+          ignore:
+            - gh-pages
