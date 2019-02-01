@@ -7,8 +7,7 @@ jobs:
       - image: circleci/node:10
     working_directory: ~/repo
     branches:
-      ignore:
-        - gh-pages
+      ignore: gh-pages
     steps:
       - checkout
       - run:
