@@ -11,13 +11,13 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+            - node_modules-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: yarn install --frozen-lockfile
       - save_cache:
           name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
+          key: node_modules-{{ checksum "yarn.lock" }}
           paths:
             - ~/repo/node_modules
   build:
@@ -29,7 +29,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+            - node_modules-{{ checksum "yarn.lock" }}
       - run:
           name: Run lint
           command: yarn lint
@@ -48,7 +48,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+            - node_modules-{{ checksum "yarn.lock" }}
       - run:
           name: Run all tests with coverage
           command: yarn test:coverage-ci
