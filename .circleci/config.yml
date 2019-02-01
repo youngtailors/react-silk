@@ -19,7 +19,7 @@ jobs:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn
+            - ~/repo/node_modules
   build:
     docker:
       - image: circleci/node:10
