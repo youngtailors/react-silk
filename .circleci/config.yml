@@ -2,15 +2,34 @@ version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.3
 jobs:
+  setup:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
   build:
     docker:
       - image: circleci/node:10
     working_directory: ~/repo
     steps:
       - checkout
-      - run:
-          name: Installing dependencies
-          command: yarn install
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Run lint
           command: yarn lint
@@ -25,6 +44,10 @@ jobs:
       - image: circleci/node:10
     steps:
       - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Run all tests with coverage
           command: yarn test:coverage-ci
@@ -33,13 +56,19 @@ jobs:
       - codecov/upload:
           file: ./packages/react-silk-form/coverage/coverage-final.json
 workflows:
+  version: 2
   build_and_test:
     jobs:
+      - setup
       - build:
-        branches:
-          ignore:
-            - gh-pages
+          requires:
+            - setup
+          filters:
+            branches:
+              ignore: gh-pages
       - test:
-        branches:
-          ignore:
-            - gh-pages
+          requires:
+            - setup
+          filters:
+            branches:
+              ignore: gh-pages
