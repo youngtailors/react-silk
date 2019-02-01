@@ -1,0 +1,11 @@
+{
+  "name": "react-silk-jest-preset",
+  "main": "jest-preset.js",
+  "version": "0.1.1",
+  "license": "MIT",
+  "author": "Young Tailors <team@procolla.com>",
+  "peerDependencies": {
+    "ts-jest": "^23.10.5",
+    "react-native-web": "^0.10.0"
+  }
+}

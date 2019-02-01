@@ -40,6 +40,7 @@
     }
   },
   "devDependencies": {
+    "react-silk-jest-preset": "^0.1.1",
     "@types/node": "^10.12.19",
     "@types/react": "^16.7.22",
     "@types/react-native": "^0.57.32",
@@ -54,14 +55,14 @@
     "lint-staged": "^8.1.1",
     "react": "^16.7.0",
     "react-art": "^16.7.0",
-    "react-native-web": "^0.10.0-alpha.3",
+    "react-native-web": "^0.10.0",
     "rimraf": "^2.6.3",
     "rollup": "^1.1.2",
     "rollup-plugin-typescript2": "^0.19.2",
     "typescript": "~3.1.1",
     "@types/jest": "^23.3.13",
     "@types/react-test-renderer": "^16.0.3",
-    "jest": "^23.6.0",
+    "jest": "^24.0.0",
     "react-test-renderer": "^16.7.0",
     "ts-jest": "^23.10.5"
   },
