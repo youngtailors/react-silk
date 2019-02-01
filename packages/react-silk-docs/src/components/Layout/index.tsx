@@ -10,20 +10,20 @@ import Footer from '../Footer'
 import './reboot.css'
 import './grid.css'
 
-const iconFontStyles = `@font-face {
-  src: url(${iconFont});
-  font-family: FontAwesome;
-}`
+// const iconFontStyles = `@font-face {
+//   src: url(${iconFont});
+//   font-family: FontAwesome;
+// }`
 
-const style = document.createElement('style')
-style.type = 'text/css'
-if ((style as any).styleSheet) {
-  ;(style as any).styleSheet.cssText = iconFontStyles
-} else {
-  style.appendChild(document.createTextNode(iconFontStyles))
-}
+// const style = document.createElement('style')
+// style.type = 'text/css'
+// if ((style as any).styleSheet) {
+//   ;(style as any).styleSheet.cssText = iconFontStyles
+// } else {
+//   style.appendChild(document.createTextNode(iconFontStyles))
+// }
 
-document.head.appendChild(style)
+// document.head.appendChild(style)
 installIconComponent(FontAwesome)
 
 const Layout: React.FunctionComponent = ({ children }) => (
