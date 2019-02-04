@@ -12,6 +12,7 @@ import { Modal } from './components/Modal'
 import { Input } from './components/Input'
 import { Checkbox } from './components/Checkbox'
 import { Icon, installIconComponent } from './components/Icon'
+import { Dropdown } from './components/Dropdown'
 import * as Colors from './components/Colors'
 
 export {
@@ -29,6 +30,7 @@ export {
   Checkbox,
   Icon,
   installIconComponent,
+  Dropdown,
 }
 
 export default {
@@ -46,4 +48,5 @@ export default {
   Checkbox,
   Icon,
   installIconComponent,
+  Dropdown,
 }
