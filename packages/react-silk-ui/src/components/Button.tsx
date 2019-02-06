@@ -1,7 +1,14 @@
 import * as React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ViewStyle,
+} from 'react-native'
 import Colors from './Colors'
 import sharedStyles from './sharedStyles'
+import { Icon } from './Icon'
 
 const styles = StyleSheet.create({
   containerNatural: {
@@ -14,6 +21,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: 10,
     paddingHorizontal: 15,
+  },
+  iconRight: {
+    marginLeft: 5,
+  },
+  iconLeft: {
+    marginRight: 5,
   },
   disabledButton: {
     opacity: 0.6,
@@ -112,6 +125,9 @@ export interface ButtonProps {
     | 'link'
   disabled?: boolean
   block?: boolean
+  icon?: string
+  iconPosition?: 'left' | 'right'
+  style?: ViewStyle
 }
 
 export const Button = ({
@@ -121,6 +137,9 @@ export const Button = ({
   disabled,
   block,
   ghost,
+  icon,
+  iconPosition,
+  style,
 }: ButtonProps) => {
   const buttonStyles = [
     styles.buttonBorder,
@@ -137,9 +156,29 @@ export const Button = ({
     buttonStyles.push(styles.disabledButton)
   }
 
+  if (style) {
+    buttonStyles.push(style)
+  }
+
   const node = (
     <View style={[styles.button, ...buttonStyles]}>
+      {icon && iconPosition === 'left' && (
+        <Icon
+          style={styles.iconLeft}
+          name={icon}
+          color={isLightVariant ? Colors.white : Colors.black}
+          size={14}
+        />
+      )}
       <Text style={textStyles}>{children}</Text>
+      {icon && iconPosition === 'right' && (
+        <Icon
+          style={styles.iconRight}
+          name={icon}
+          color={isLightVariant ? Colors.white : Colors.black}
+          size={14}
+        />
+      )}
     </View>
   )
   const containerStyles = []
@@ -161,4 +200,5 @@ Button.defaultProps = {
   ghost: false,
   disabled: false,
   block: false,
+  iconPosition: 'right',
 }
