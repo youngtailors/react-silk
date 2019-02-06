@@ -1,21 +1,24 @@
 import * as React from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { Hitbox } from './Hitbox'
-import Colors from './Colors'
+import { View, StyleSheet } from 'react-native'
+import { Hitbox } from '../Hitbox'
+import Colors from '../Colors'
 
 const styles = StyleSheet.create({
   dropdown: {
-    backgroundColor: Colors.danger,
     position: 'absolute',
-    height: 100,
-    width: 200,
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: Colors.smokeWhite,
+    backgroundColor: Colors.white,
+  },
+  upZ: {
+    zIndex: 5,
   },
 })
 
 interface Props {
-  toggle: () => void
+  renderButton: (props: any) => React.ReactChildren
 }
 interface State {
   open: boolean
@@ -57,17 +60,20 @@ export class Dropdown extends React.Component<Props, State> {
   }
   render() {
     const dropdownStyles: [any] = [styles.dropdown]
+    const containerStyles = []
     if (this.state.open) {
       dropdownStyles.push({
         top: this.state.height + this.state.pageY,
         left: this.state.pageX,
       })
+      containerStyles.push(styles.upZ)
     }
     return (
-      <View ref={this._view}>
-        <TouchableOpacity onPress={this.toggle}>
-          <Text>Dropdown</Text>
-        </TouchableOpacity>
+      <View ref={this._view} style={containerStyles}>
+        {this.props.renderButton({
+          isOpen: this.state.open,
+          toggle: this.toggle,
+        })}
         {this.state.open && (
           <div
             style={{
@@ -76,13 +82,11 @@ export class Dropdown extends React.Component<Props, State> {
               bottom: 0,
               left: 0,
               right: 0,
-              zIndex: 2,
+              zIndex: 10,
             }}
           >
             <Hitbox onPress={this.toggle} />
-            <View style={dropdownStyles}>
-              <Text style={{ color: Colors.white }}>Happy new year</Text>
-            </View>
+            <View style={dropdownStyles}>{this.props.children}</View>
           </div>
         )}
       </View>

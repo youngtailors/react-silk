@@ -24,5 +24,8 @@ export default () => (
     <NavItem>
       <Link to="/components/icons">Icons</Link>
     </NavItem>
+    <NavItem>
+      <Link to="/components/dropdowns">Dropdowns</Link>
+    </NavItem>
   </NavItems>
 )

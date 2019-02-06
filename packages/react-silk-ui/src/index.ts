@@ -13,6 +13,8 @@ import { Input } from './components/Input'
 import { Checkbox } from './components/Checkbox'
 import { Icon, installIconComponent } from './components/Icon'
 import { Dropdown } from './components/Dropdown'
+import { DropdownButton } from './components/Dropdown/Button'
+import { DropdownItem } from './components/Dropdown/Item'
 import * as Colors from './components/Colors'
 
 export {
@@ -31,6 +33,8 @@ export {
   Icon,
   installIconComponent,
   Dropdown,
+  DropdownButton,
+  DropdownItem,
 }
 
 export default {
@@ -49,4 +53,6 @@ export default {
   Icon,
   installIconComponent,
   Dropdown,
+  DropdownButton,
+  DropdownItem,
 }
