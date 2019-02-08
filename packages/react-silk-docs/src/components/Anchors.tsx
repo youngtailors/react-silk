@@ -27,5 +27,8 @@ export default () => (
     <NavItem>
       <Link to="/components/dropdowns">Dropdowns</Link>
     </NavItem>
+    <NavItem>
+      <Link to="/components/carousels">Carousels</Link>
+    </NavItem>
   </NavItems>
 )

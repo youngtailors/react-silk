@@ -15,6 +15,7 @@ import { Icon, installIconComponent } from './components/Icon'
 import { Dropdown } from './components/Dropdown'
 import { DropdownButton } from './components/Dropdown/Button'
 import { DropdownItem } from './components/Dropdown/Item'
+import { Carousel } from './components/Carousel'
 import * as Colors from './components/Colors'
 
 export {
@@ -35,6 +36,7 @@ export {
   Dropdown,
   DropdownButton,
   DropdownItem,
+  Carousel,
 }
 
 export default {
@@ -55,4 +57,5 @@ export default {
   Dropdown,
   DropdownButton,
   DropdownItem,
+  Carousel,
 }
