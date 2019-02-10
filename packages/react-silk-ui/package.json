@@ -23,5 +23,8 @@
     "react": "^16.7.0",
     "react-art": "^16.7.0",
     "react-native-web": "^0.10.0"
+  },
+  "dependencies": {
+    "react-spring": "^8.0.5"
   }
 }

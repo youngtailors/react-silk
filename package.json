@@ -69,7 +69,5 @@
   "workspaces": [
     "packages/*"
   ],
-  "dependencies": {
-    "react-spring": "^8.0.5"
-  }
+  "dependencies": {}
 }
