@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { View, StyleSheet, TextInput } from 'react-native'
+import { View, StyleSheet, TextInput, ViewStyle } from 'react-native'
 import { Text } from './Text'
 import Colors from './Colors'
 
@@ -40,6 +40,7 @@ export interface Props {
   onChange?: () => void
   disabled?: boolean
   value?: string
+  style?: ViewStyle
 }
 
 export const Input = ({
@@ -49,13 +50,14 @@ export const Input = ({
   disabled,
   onChange,
   value,
+  style,
 }: Props) => {
   const inputStyles = []
   if (errorMessage) {
     inputStyles.push(styles.errorBorder)
   }
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       {label && <Text style={styles.label}>{label}</Text>}
       {disabled ? (
         <View style={[styles.disabledView, ...inputStyles]}>
