@@ -7,7 +7,7 @@ import { Icon } from './Icon'
 const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
-    flexDirection: 'row',
+    height: 400,
   },
 
   iconLeft: {
@@ -33,10 +33,6 @@ const styles = StyleSheet.create({
   icon: {
     display: 'flex',
     justifyContent: 'center',
-  },
-
-  slideWrapper: {
-    width: '100%',
   },
 
   slide: {
@@ -102,77 +98,71 @@ export class Carousel extends React.Component<Props> {
   render() {
     const { index } = this.state
     const { data } = this.props
+    const from: string = `translate3d(100% ,0 ,0)`
+    const enter: string = 'translate3d(0% ,0 ,0)'
+    const leave: string = `translate3d(-100% ,0 ,0)`
     return (
       <View style={styles.container}>
-        {data.map((item: any, i: number) => {
-          const from: string = `translate3d(100% ,0 ,0)`
-          const enter: string = 'translate3d(0% ,0 ,0)'
-          const leave: string = `translate3d(-100% ,0 ,0)`
-          return (
-            i === index && (
-              <View key={`${i}_slide`} style={styles.slideWrapper}>
-                <Transition
-                  items={item}
-                  from={{ transform: from }}
-                  enter={{ transform: enter }}
-                  leave={{ transform: leave }}
-                >
-                  {item => (props: any) => (
-                    <animated.div style={props}>
-                      <View>
-                        <View style={styles.slide}>
-                          <Image
-                            style={styles.slideStyle}
-                            source={{ uri: item }}
-                          />
-                          <View style={styles.iconLeft}>
-                            <TouchableOpacity
-                              onPress={() => {
-                                this.handleSlide(false)
-                              }}
-                            >
-                              <Icon
-                                style={styles.icon}
-                                name="angle-left"
-                                color={Colors.white}
-                                size={46}
-                              />
-                            </TouchableOpacity>
-                          </View>
-                          <View style={styles.iconRight}>
-                            <TouchableOpacity
-                              onPress={() => {
-                                this.handleSlide(true)
-                              }}
-                            >
-                              <Icon
-                                style={styles.icon}
-                                name="angle-right"
-                                color={Colors.white}
-                                size={46}
-                              />
-                            </TouchableOpacity>
-                          </View>
-                          <View style={styles.delimiters}>
-                            {data.map((_: any, id: number) => (
-                              <Icon
-                                key={`${id}_dot`}
-                                style={styles.dots}
-                                name="circle-o"
-                                color={Colors.white}
-                                size={id === index ? 14 : 9}
-                              />
-                            ))}
-                          </View>
-                        </View>
-                      </View>
-                    </animated.div>
-                  )}
-                </Transition>
+        <Transition
+          items={data[index]}
+          native
+          reset
+          unique
+          from={{ transform: from }}
+          enter={{ transform: enter }}
+          leave={{ transform: leave }}
+        >
+          {item => props => (
+            <animated.div
+              style={{ ...props, position: 'absolute', width: '100%' }}
+            >
+              <View>
+                <View style={styles.slide}>
+                  <Image style={styles.slideStyle} source={{ uri: item }} />
+                  <View style={styles.iconLeft}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        this.handleSlide(false)
+                      }}
+                    >
+                      <Icon
+                        style={styles.icon}
+                        name="angle-left"
+                        color={Colors.white}
+                        size={46}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.iconRight}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        this.handleSlide(true)
+                      }}
+                    >
+                      <Icon
+                        style={styles.icon}
+                        name="angle-right"
+                        color={Colors.white}
+                        size={46}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.delimiters}>
+                    {data.map((_: any, id: number) => (
+                      <Icon
+                        key={`${id}_dot`}
+                        style={styles.dots}
+                        name="circle-o"
+                        color={Colors.white}
+                        size={id === index ? 14 : 9}
+                      />
+                    ))}
+                  </View>
+                </View>
               </View>
-            )
-          )
-        })}
+            </animated.div>
+          )}
+        </Transition>
       </View>
     )
   }
