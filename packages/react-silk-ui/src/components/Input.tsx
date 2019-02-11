@@ -37,10 +37,11 @@ export interface Props {
   label?: string
   placeholder?: string
   errorMessage?: string
-  onChange?: () => void
+  onChange?: (arg: string) => void
   disabled?: boolean
   value?: string
   style?: ViewStyle
+  setRef?: (arg: any) => void
 }
 
 export const Input = ({
@@ -51,6 +52,7 @@ export const Input = ({
   onChange,
   value,
   style,
+  setRef,
 }: Props) => {
   const inputStyles = []
   if (errorMessage) {
@@ -65,6 +67,7 @@ export const Input = ({
         </View>
       ) : (
         <TextInput
+          ref={ref => (setRef ? setRef(ref) : null)}
           editable
           maxLength={40}
           style={[styles.textInput, ...inputStyles]}
@@ -80,4 +83,5 @@ export const Input = ({
 
 Input.defaultProps = {
   disabled: false,
+  setRef: () => {},
 }

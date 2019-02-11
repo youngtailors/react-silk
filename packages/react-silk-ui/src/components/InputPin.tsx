@@ -17,16 +17,59 @@ export interface Props {
   length?: number
 }
 
-export const InputPin = ({ length }: Props) => (
-  <View style={styles.container}>
-    {Array.apply(null, { length })
-      .map(Number.call, Number)
-      .map((value: number) => (
-        <Input key={value} style={styles.input} />
-      ))}
-  </View>
-)
+export interface State {
+  refs: any
+  data: any
+}
 
-InputPin.defaultProps = {
-  length: 6,
+export class InputPin extends React.Component<Props, State> {
+  static defaultProps = {
+    length: 6,
+  }
+
+  setRef: any
+  onChange: any
+
+  constructor(props: Props) {
+    super(props)
+    const refs: any = {}
+    for (let i = 0; i < Number(props.length); i += 1) {
+      refs[i] = null
+    }
+    this.state = {
+      data: {},
+      refs,
+    }
+
+    this.setRef = (index: string, ref: any) => {
+      if (this.state.refs[index]) {
+        return
+      }
+      this.setState(prevState => ({
+        refs: { ...prevState.refs, [index]: ref },
+      }))
+    }
+
+    this.onChange = (index: string, text: string) => {
+      if (Number(index) === Number(props.length) - 1) {
+        return
+      }
+      this.state.refs[Number(index) + 1].focus()
+    }
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        {Object.keys(this.state.refs).map(index => (
+          <Input
+            key={index}
+            style={styles.input}
+            setRef={ref => this.setRef(index, ref)}
+            onChange={text => this.onChange(index, text)}
+          />
+        ))}
+      </View>
+    )
+  }
 }
