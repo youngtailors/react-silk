@@ -1,10 +1,22 @@
 import * as React from 'react'
-import { StyleSheet } from 'react-native'
-import { Carousel } from 'react-silk-ui'
+import { StyleSheet, View, Text } from 'react-native'
+import { Carousel, Heading6 } from 'react-silk-ui'
+
+const styles = StyleSheet.create({
+  textDemo: {
+    paddingVertical: 12,
+    backgroundColor: '#282c34',
+    color: '#fff',
+    marginVertical: 12,
+    paddingLeft: 30,
+    borderRadius: 6,
+  },
+})
 
 interface State {
   data: any
 }
+
 export default class extends React.Component<_, State> {
   constructor(props: Props) {
     super(props)
@@ -19,8 +31,33 @@ export default class extends React.Component<_, State> {
 
   render() {
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <Heading6>Default carousel</Heading6>
+        <Text
+          style={styles.textDemo}
+        >{`<Carousel data={this.state.data}/>`}</Text>
         <Carousel data={this.state.data} />
+        <View style={{ height: 30 }} />
+        <Heading6>Auto slide with autoSlide prop</Heading6>
+        <Text
+          style={styles.textDemo}
+        >{`<Carousel data={this.state.data} autoSlide/>`}</Text>
+        <Carousel data={this.state.data} autoSlide />
+        <View style={{ height: 30 }} />
+        <Heading6>
+          Set duration for animation, and set interval time for auto slide
+        </Heading6>
+        <Text
+          style={styles.textDemo}
+        >{`<Carousel data={this.state.data} duration={300} interval={5000} />`}</Text>
+        <Carousel data={this.state.data} duration={300} interval={5000} />
+        <View style={{ height: 30 }} />
+        <Heading6>Hide dots and arrows</Heading6>
+        <Text
+          style={styles.textDemo}
+        >{`<Carousel data={this.state.data} hideArrows hideDots />`}</Text>
+        <Carousel data={this.state.data} autoSlide hideArrows hideDots />
+        <View style={{ height: 30 }} />
       </div>
     )
   }

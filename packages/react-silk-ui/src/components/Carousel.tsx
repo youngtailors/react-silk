@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Image, TouchableOpacity, Text } from 'react-native'
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { Transition, animated } from 'react-spring/renderprops'
 import Colors from './Colors'
 import { Icon } from './Icon'
@@ -35,8 +35,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  slide: {
+  slideWrapper: {
     position: 'relative',
+    height: '100%',
+  },
+
+  slideAnimations: {
+    position: 'absolute',
+    width: '100%',
   },
 
   slideStyle: {
@@ -59,33 +65,68 @@ const styles = StyleSheet.create({
 })
 
 export interface Props {
-  autoSlide?: boolean
-  interval?: number
+  autoSlide: boolean
+  interval: number
   duration?: number
-  dots?: boolean
+  hideDots?: boolean
   data: any
-  arrow?: boolean
+  hideArrows?: boolean
 }
 
 export class Carousel extends React.Component<Props> {
+  static defaultProps = {
+    autoSlide: false,
+    interval: 8000,
+    duration: 200,
+    hideDots: false,
+    hideArrows: false,
+  }
   state = {
     index: 0,
+    isRight: false,
   }
+
   constructor(props: Props) {
     super(props)
   }
 
-  handleSlide = (isRight: boolean) => {
+  async componentDidMount() {
+    const { interval, autoSlide } = this.props
+    await this.autoSlide(autoSlide, interval)
+    await setTimeout(() => this.componentDidMount(), interval)
+  }
+
+  autoSlide = (isAuto: boolean, interval: number) => {
+    const { index } = this.state
+    const { data } = this.props
+    if (isAuto) {
+      let fIndex: number = index
+      if (fIndex === data.length - 1) {
+        fIndex = 0
+        this.setState({ isRight: true })
+      } else {
+        fIndex++
+        this.setState({ isRight: false })
+      }
+      setTimeout(() => {
+        this.setState({ index: fIndex })
+      }, interval)
+    }
+  }
+
+  handleSlide = (isRightArrow: boolean) => {
     const { index } = this.state
     let currentIndex = index
     const { data } = this.props
-    if (isRight) {
+    if (isRightArrow) {
+      this.setState({ isRight: true })
       if (currentIndex < data.length - 1) {
         currentIndex++
       } else {
         currentIndex = 0
       }
     } else {
+      this.setState({ isRight: false })
       if (currentIndex === 0) {
         currentIndex = data.length - 1
       } else {
@@ -95,74 +136,99 @@ export class Carousel extends React.Component<Props> {
     this.setState({ index: currentIndex })
   }
 
-  render() {
+  handleDotClick = (id: number) => {
     const { index } = this.state
-    const { data } = this.props
-    const from: string = `translate3d(100% ,0 ,0)`
+    if (id > index) {
+      this.setState({ isRight: false })
+    } else if (id < index) {
+      this.setState({ isRight: true })
+    }
+    this.setState({ index: id })
+  }
+
+  render() {
+    const { index, isRight } = this.state
+    const { data, duration, hideDots, hideArrows } = this.props
+    const from: string = `translate3d(${isRight ? -100 : 100}% ,0 ,0)`
     const enter: string = 'translate3d(0% ,0 ,0)'
-    const leave: string = `translate3d(-100% ,0 ,0)`
+    const leave: string = `translate3d(${isRight ? 100 : -100}% ,0 ,0)`
     return (
       <View style={styles.container}>
-        <Transition
-          items={data[index]}
-          native
-          reset
-          unique
-          from={{ transform: from }}
-          enter={{ transform: enter }}
-          leave={{ transform: leave }}
-        >
-          {item => props => (
-            <animated.div
-              style={{ ...props, position: 'absolute', width: '100%' }}
+        {data && (
+          <View style={styles.slideWrapper}>
+            <Transition
+              items={data[index]}
+              native
+              reset
+              unique
+              from={{ transform: from }}
+              enter={{ transform: enter }}
+              leave={{ transform: leave }}
+              config={{ duration }}
             >
-              <View>
-                <View style={styles.slide}>
-                  <Image style={styles.slideStyle} source={{ uri: item }} />
-                  <View style={styles.iconLeft}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        this.handleSlide(false)
-                      }}
-                    >
-                      <Icon
-                        style={styles.icon}
-                        name="angle-left"
-                        color={Colors.white}
-                        size={46}
-                      />
-                    </TouchableOpacity>
+              {item => props => (
+                <animated.div
+                  style={{ ...props, position: 'absolute', width: '100%' }}
+                >
+                  <View>
+                    <Image style={styles.slideStyle} source={{ uri: item }} />
                   </View>
-                  <View style={styles.iconRight}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        this.handleSlide(true)
-                      }}
-                    >
-                      <Icon
-                        style={styles.icon}
-                        name="angle-right"
-                        color={Colors.white}
-                        size={46}
-                      />
-                    </TouchableOpacity>
-                  </View>
-                  <View style={styles.delimiters}>
-                    {data.map((_: any, id: number) => (
-                      <Icon
-                        key={`${id}_dot`}
-                        style={styles.dots}
-                        name="circle-o"
-                        color={Colors.white}
-                        size={id === index ? 14 : 9}
-                      />
-                    ))}
-                  </View>
-                </View>
+                </animated.div>
+              )}
+            </Transition>
+            {!hideArrows && (
+              <View style={styles.iconLeft}>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.handleSlide(false)
+                  }}
+                >
+                  <Icon
+                    style={styles.icon}
+                    name="angle-left"
+                    color={Colors.white}
+                    size={46}
+                  />
+                </TouchableOpacity>
               </View>
-            </animated.div>
-          )}
-        </Transition>
+            )}
+            {!hideArrows && (
+              <View style={styles.iconRight}>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.handleSlide(true)
+                  }}
+                >
+                  <Icon
+                    style={styles.icon}
+                    name="angle-right"
+                    color={Colors.white}
+                    size={46}
+                  />
+                </TouchableOpacity>
+              </View>
+            )}
+            {!hideDots && (
+              <View style={styles.delimiters}>
+                {data.map((_: any, id: number) => (
+                  <TouchableOpacity
+                    key={`${id}_dot`}
+                    onPress={() => {
+                      this.handleDotClick(id)
+                    }}
+                  >
+                    <Icon
+                      style={styles.dots}
+                      name="circle-o"
+                      color={Colors.white}
+                      size={id === index ? 14 : 9}
+                    />
+                  </TouchableOpacity>
+                ))}
+              </View>
+            )}
+          </View>
+        )}
       </View>
     )
   }
