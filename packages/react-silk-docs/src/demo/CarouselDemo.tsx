@@ -26,6 +26,13 @@ export default class extends React.Component<_, State> {
         'https://images.unsplash.com/photo-1453785675141-67637e2d4b5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=818&q=80',
         'https://images.unsplash.com/photo-1540202404-d0c7fe46a087?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80',
       ],
+      dataObject: [
+        {
+          url:
+            'https://images.unsplash.com/photo-1502261159926-e31d770eb6e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=881&q=80',
+          title: 'Carousel',
+        },
+      ],
     }
   }
 
