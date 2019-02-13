@@ -35,18 +35,18 @@ git checkout -b fix-something -t upstream/master
 ### Step 3: Install the dependencies & Bootstrap the project
 
 ```bash
-npm install
-npm run setup
+yarn
+yarn bootstrap
 ```
 
 ### Step 4: Write some code & build
 
-When you are happy with your changes, run `npm run build`.
-If you don't want to repeat the process of linting & building from time to time, run `npm start` which should concurrently start **watching** and **serving**.
+When you are happy with your changes, run `yarn build`.
+If you don't want to repeat the process of linting & building from time to time, run `yarn dev` which should concurrently start **watching** and **serving**.
 
 ### Step 5: Tests
 
-It's easy, `npm test`. Want coverage reports also? `npm run coverage`.
+It's easy, `yarn test`. Want coverage reports also? `yarn test:coverage`.
 
 ### Step 6: Commit
 
