@@ -42,6 +42,7 @@ export interface Props {
   value?: string
   style?: ViewStyle
   setRef?: (arg: any) => void
+  inputStyle?: any
 }
 
 export const Input = ({
@@ -53,10 +54,14 @@ export const Input = ({
   value,
   style,
   setRef,
+  inputStyle,
 }: Props) => {
   const inputStyles = []
   if (errorMessage) {
     inputStyles.push(styles.errorBorder)
+  }
+  if (inputStyle) {
+    inputStyles.push(inputStyle)
   }
   return (
     <View style={[styles.container, style]}>
@@ -74,6 +79,7 @@ export const Input = ({
           underlineColorAndroid="transparent"
           placeholder={placeholder}
           onChangeText={onChange}
+          value={value}
         />
       )}
       {errorMessage && <Text style={styles.errorMessage}>{errorMessage}</Text>}

@@ -10,12 +10,36 @@ const Wrapper = styled.div`
     margin-bottom: 1rem;
   }
 `
+const Demo = styled.div`
+  display: flex;
+  align-items: center;
+`
 
-export default () => (
-  <MyMom>
-    <Wrapper>
-      <InputPin length={4} />
-      <InputPin length={6} />
-    </Wrapper>
-  </MyMom>
-)
+export default class extends React.PureComponent {
+  state = {
+    pin1: '',
+    pin2: '',
+  }
+  render() {
+    return (
+      <MyMom>
+        <Wrapper>
+          <Demo>
+            <InputPin
+              length={4}
+              onChange={pin => this.setState({ pin1: pin })}
+            />
+            <strong>{this.state.pin1}</strong>
+          </Demo>
+          <Demo>
+            <InputPin
+              length={6}
+              onChange={pin => this.setState({ pin2: pin })}
+            />
+            <strong>{this.state.pin2}</strong>
+          </Demo>
+        </Wrapper>
+      </MyMom>
+    )
+  }
+}

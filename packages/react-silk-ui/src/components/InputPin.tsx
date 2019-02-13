@@ -10,11 +10,16 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     marginRight: 5,
+    marginBottom: 0,
+  },
+  inputStyle: {
+    textAlign: 'center',
   },
 })
 
 export interface Props {
   length?: number
+  onChange?: (arg: string) => void
 }
 
 export interface State {
@@ -51,6 +56,23 @@ export class InputPin extends React.Component<Props, State> {
     }
 
     this.onChange = (index: string, text: string) => {
+      if (!text) {
+        return
+      }
+      this.setState(
+        prevState => ({
+          data: { ...prevState.data, [index]: text[text.length - 1] },
+        }),
+        () => {
+          if (this.props.onChange) {
+            let value: string = ''
+            for (let i = 0; i < Number(props.length); i += 1) {
+              value += this.state.data[i] || ' '
+            }
+            this.props.onChange(value)
+          }
+        },
+      )
       if (Number(index) === Number(props.length) - 1) {
         return
       }
@@ -65,8 +87,10 @@ export class InputPin extends React.Component<Props, State> {
           <Input
             key={index}
             style={styles.input}
+            inputStyle={styles.inputStyle}
             setRef={ref => this.setRef(index, ref)}
             onChange={text => this.onChange(index, text)}
+            value={this.state.data[index] || ''}
           />
         ))}
       </View>
