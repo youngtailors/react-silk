@@ -69,7 +69,7 @@ export interface Props {
   autoSlide: boolean
   interval: number
   duration?: number
-  hideDots?: boolean
+  hideDelimiters?: boolean
   data: any
   hideArrows?: boolean
 }
@@ -79,7 +79,7 @@ export class Carousel extends React.Component<Props> {
     autoSlide: false,
     interval: 8000,
     duration: 200,
-    hideDots: false,
+    hideDelimiters: false,
     hideArrows: false,
   }
 
@@ -148,9 +148,16 @@ export class Carousel extends React.Component<Props> {
     this.setState({ index: id })
   }
 
+  // handleUrl = (url: string) => {
+  //   if (url.startsWith('http')) {
+  //     return { uri: url }
+  //   }
+  //   return require(url)
+  // }
+
   render() {
     const { index, isRight } = this.state
-    const { data, duration, hideDots, hideArrows } = this.props
+    const { data, duration, hideDelimiters, hideArrows } = this.props
     const from: string = `translate3d(${isRight ? -100 : 100}% ,0 ,0)`
     const enter: string = 'translate3d(0% ,0 ,0)'
     const leave: string = `translate3d(${isRight ? 100 : -100}% ,0 ,0)`
@@ -211,7 +218,7 @@ export class Carousel extends React.Component<Props> {
                   </TouchableOpacity>
                 </View>
               )}
-              {!hideDots && (
+              {!hideDelimiters && (
                 <View style={styles.delimiters}>
                   {data.map((_: any, id: number) => (
                     <TouchableOpacity

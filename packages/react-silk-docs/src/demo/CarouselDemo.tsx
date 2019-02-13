@@ -56,14 +56,19 @@ export default class extends React.Component<_, State> {
         </Heading6>
         <Text
           style={styles.textDemo}
-        >{`<Carousel data={this.state.data} duration={300} interval={5000} />`}</Text>
-        <Carousel data={this.state.data} duration={300} interval={5000} />
+        >{`<Carousel data={this.state.data} autoSlide duration={300} interval={5000} />`}</Text>
+        <Carousel
+          data={this.state.data}
+          autoSlide
+          duration={300}
+          interval={5000}
+        />
         <View style={{ height: 30 }} />
         <Heading6>Hide dots and arrows</Heading6>
         <Text
           style={styles.textDemo}
-        >{`<Carousel data={this.state.data} hideArrows hideDots />`}</Text>
-        <Carousel data={this.state.data} autoSlide hideArrows hideDots />
+        >{`<Carousel data={this.state.data} hideArrows hideDelimiters />`}</Text>
+        <Carousel data={this.state.data} autoSlide hideArrows hideDelimiters />
         <View style={{ height: 30 }} />
       </div>
     )
