@@ -2,7 +2,34 @@
 
 exports[`<Text /> match snapshot 1`] = `
 <div
-  className="rn-borderTopWidth-13yce4e rn-borderRightWidth-fnigne rn-borderBottomWidth-ndvcnb rn-borderLeftWidth-gxnn5r rn-boxSizing-deolkf rn-color-homxoj rn-display-1471scf rn-fontFamily-14xgk7a rn-fontSize-ubezar rn-fontStyle-o11vmf rn-fontVariant-ebii48 rn-fontWeight-gul640 rn-lineHeight-t9a87b rn-marginTop-1mnahxq rn-marginRight-61z16t rn-marginBottom-p1pxzi rn-marginLeft-11wrixw rn-paddingTop-wk8lta rn-paddingRight-9aemit rn-paddingBottom-1mdbw0j rn-paddingLeft-gy4na3 rn-textDecoration-bauka4 rn-whiteSpace-q42fyq rn-wordWrap-qvutc0"
   dir="auto"
+  style={
+    Object {
+      "borderBottomWidth": "0px",
+      "borderLeftWidth": "0px",
+      "borderRightWidth": "0px",
+      "borderTopWidth": "0px",
+      "boxSizing": "border-box",
+      "color": "inherit",
+      "display": "inline",
+      "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Ubuntu, \\"Helvetica Neue\\", sans-serif",
+      "fontSize": "16px",
+      "fontStyle": "inherit",
+      "fontVariant": "inherit",
+      "fontWeight": "inherit",
+      "lineHeight": "inherit",
+      "marginBottom": "0px",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "marginTop": "0px",
+      "paddingBottom": "0px",
+      "paddingLeft": "0px",
+      "paddingRight": "0px",
+      "paddingTop": "0px",
+      "textDecoration": "none",
+      "whiteSpace": "pre-wrap",
+      "wordWrap": "break-word",
+    }
+  }
 />
 `;
