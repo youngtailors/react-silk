@@ -20,7 +20,7 @@ Fork the project on GitHub and clone your fork.
 ```bash
 git clone git@github.com:username/react-silk.git
 cd react-silk
-git remote add upstream https://github.com/coralo/react-silk.git
+git remote add upstream https://github.com/youngtailors/react-silk.git
 git fetch upstream
 ```
 
