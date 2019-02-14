@@ -30,5 +30,8 @@ export default () => (
     <NavItem>
       <Link to="/components/masonry">Masonry</Link>
     </NavItem>
+    <NavItem>
+      <Link to="/components/input_pins">Input Pins</Link>
+    </NavItem>
   </NavItems>
 )

@@ -17,6 +17,7 @@ import { DropdownButton } from './components/Dropdown/Button'
 import { DropdownItem } from './components/Dropdown/Item'
 import * as Colors from './components/Colors'
 import { Masonry } from './components/Masonry'
+import { InputPin } from './components/InputPin'
 
 export {
   Text,
@@ -37,6 +38,7 @@ export {
   DropdownButton,
   DropdownItem,
   Masonry,
+  InputPin,
 }
 
 export default {
@@ -58,4 +60,5 @@ export default {
   DropdownButton,
   DropdownItem,
   Masonry,
+  InputPin,
 }

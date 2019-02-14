@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { View, StyleSheet, TextInput } from 'react-native'
+import { View, StyleSheet, TextInput, ViewStyle } from 'react-native'
 import { Text } from './Text'
 import Colors from './Colors'
 
@@ -37,9 +37,12 @@ export interface Props {
   label?: string
   placeholder?: string
   errorMessage?: string
-  onChange?: () => void
+  onChange?: (arg: string) => void
   disabled?: boolean
   value?: string
+  style?: ViewStyle
+  setRef?: (arg: any) => void
+  inputStyle?: any
 }
 
 export const Input = ({
@@ -49,13 +52,19 @@ export const Input = ({
   disabled,
   onChange,
   value,
+  style,
+  setRef,
+  inputStyle,
 }: Props) => {
   const inputStyles = []
   if (errorMessage) {
     inputStyles.push(styles.errorBorder)
   }
+  if (inputStyle) {
+    inputStyles.push(inputStyle)
+  }
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       {label && <Text style={styles.label}>{label}</Text>}
       {disabled ? (
         <View style={[styles.disabledView, ...inputStyles]}>
@@ -63,12 +72,14 @@ export const Input = ({
         </View>
       ) : (
         <TextInput
+          ref={ref => (setRef ? setRef(ref) : null)}
           editable
           maxLength={40}
           style={[styles.textInput, ...inputStyles]}
           underlineColorAndroid="transparent"
           placeholder={placeholder}
           onChangeText={onChange}
+          value={value}
         />
       )}
       {errorMessage && <Text style={styles.errorMessage}>{errorMessage}</Text>}
@@ -78,4 +89,5 @@ export const Input = ({
 
 Input.defaultProps = {
   disabled: false,
+  setRef: () => {},
 }
