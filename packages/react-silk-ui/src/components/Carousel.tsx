@@ -3,12 +3,13 @@ import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { Transition, animated } from 'react-spring/renderprops'
 import Colors from './Colors'
 import { Icon } from './Icon'
+import iconMap from './iconMap'
 
 const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
     height: 400,
-    backgroundColor: '#f4f4f4',
+    backgroundColor: Colors.smokeWhite,
   },
 
   iconLeft: {
@@ -86,10 +87,6 @@ export class Carousel extends React.Component<Props> {
   state = {
     index: 0,
     isRight: false,
-  }
-
-  constructor(props: Props) {
-    super(props)
   }
 
   async componentDidMount() {
@@ -195,7 +192,7 @@ export class Carousel extends React.Component<Props> {
                   >
                     <Icon
                       style={styles.icon}
-                      name="angle-left"
+                      name={iconMap.ArrowLeft}
                       color={Colors.white}
                       size={46}
                     />
@@ -211,7 +208,7 @@ export class Carousel extends React.Component<Props> {
                   >
                     <Icon
                       style={styles.icon}
-                      name="angle-right"
+                      name={iconMap.ArrowRight}
                       color={Colors.white}
                       size={46}
                     />
@@ -229,7 +226,7 @@ export class Carousel extends React.Component<Props> {
                     >
                       <Icon
                         style={styles.dots}
-                        name="circle-o"
+                        name={iconMap.CircleO}
                         color={Colors.white}
                         size={id === index ? 14 : 9}
                       />

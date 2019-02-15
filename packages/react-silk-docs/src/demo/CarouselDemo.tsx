@@ -3,6 +3,10 @@ import { StyleSheet, View, Text } from 'react-native'
 import { Carousel, Heading6 } from 'react-silk-ui'
 
 const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
   textDemo: {
     paddingVertical: 12,
     backgroundColor: '#282c34',
@@ -38,7 +42,7 @@ export default class extends React.Component<_, State> {
 
   render() {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <View style={styles.container}>
         <Heading6>Default carousel</Heading6>
         <Text
           style={styles.textDemo}
@@ -67,10 +71,10 @@ export default class extends React.Component<_, State> {
         <Heading6>Hide dots and arrows</Heading6>
         <Text
           style={styles.textDemo}
-        >{`<Carousel data={this.state.data} hideArrows hideDelimiters />`}</Text>
+        >{`<Carousel data={this.state.data} autoSlide hideArrows hideDelimiters />`}</Text>
         <Carousel data={this.state.data} autoSlide hideArrows hideDelimiters />
         <View style={{ height: 30 }} />
-      </div>
+      </View>
     )
   }
 }
