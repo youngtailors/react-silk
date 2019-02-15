@@ -73,7 +73,6 @@ export class Masonry extends React.Component<Props, State> {
   }
 
   render() {
-    console.log(this.state)
     return (
       <View onLayout={this.onLayout} style={{ flexDirection: 'row' }}>
         {this.state.columns.map((col, index) => (
