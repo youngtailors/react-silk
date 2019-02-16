@@ -30,5 +30,8 @@ export default () => (
     <NavItem>
       <Link to="/components/carousels">Carousels</Link>
     </NavItem>
+    <NavItem>
+      <Link to="/components/input_pins">Input Pins</Link>
+    </NavItem>
   </NavItems>
 )
