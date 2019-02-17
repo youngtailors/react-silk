@@ -18,6 +18,7 @@ import { DropdownItem } from './components/Dropdown/Item'
 import { Carousel } from './components/Carousel'
 import * as Colors from './components/Colors'
 import { InputPin } from './components/InputPin'
+import { NameCard } from './components/NameCard'
 
 export {
   Text,
@@ -39,6 +40,7 @@ export {
   DropdownItem,
   Carousel,
   InputPin,
+  NameCard,
 }
 
 export default {
@@ -61,4 +63,5 @@ export default {
   DropdownItem,
   Carousel,
   InputPin,
+  NameCard,
 }
