@@ -50,7 +50,6 @@ export default class MasonryDemo extends React.Component {
   render() {
     const { toggle, url } = this.state
     const imgSize = this.imageSize(this.state.width, this.state.height)
-    console.log({ imgSize, width, height }, this.state.width, this.state.height)
     return (
       <MyMom>
         <Masonry images={images} />
