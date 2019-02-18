@@ -1,6 +1,7 @@
 import * as React from 'react'
 import MyMom from '.'
-import { Masonry } from 'react-silk-ui'
+import { Image, Dimensions } from 'react-native'
+import { Masonry, Heading1, Modal } from 'react-silk-ui'
 
 const images = [
   'https://scontent.fhan2-4.fna.fbcdn.net/v/t31.0-8/13730784_647810078709160_3846914210127211736_o.jpg?_nc_cat=100&_nc_oc=AQlRh6JpGJGsOoOtd_xxntS_pXSq4cRTlhrYNoGI_iDs7Ii_BBIlP1nndF1AOUu9LCo&_nc_ht=scontent.fhan2-4.fna&oh=64ff728527380abd0c837daa9984eb13&oe=5CFF6D9E',
@@ -14,8 +15,59 @@ const images = [
   'https://scontent.fhan1-1.fna.fbcdn.net/v/t1.0-9/16142729_743187669171400_8051320599802458096_n.jpg?_nc_cat=101&_nc_oc=AQna21chEwEThpG3a6AFNWl_WfUwlVMuhxaYqOpCAC1S4HC5yxai8R0bfBw5ajS09O4&_nc_ht=scontent.fhan1-1.fna&oh=940af0f588e520b22a91a5d0269efb7f&oe=5CF26D4C',
 ]
 
-export default () => (
-  <MyMom>
-    <Masonry images={images} />
-  </MyMom>
-)
+const { width, height } = Dimensions.get('window')
+
+export default class MasonryDemo extends React.Component {
+  state = {
+    toggle: false,
+    url: '',
+    width: 0,
+    height: 0,
+  }
+
+  setModalImg = (img: { url: string; height: number; width: number }) => {
+    this.setState({
+      toggle: !this.state.toggle,
+      ...img,
+    })
+  }
+
+  imageSize(w: number, h: number) {
+    const newW = width - 30
+    const newH = height - 30
+    if (w / newW < h / newH) {
+      return {
+        w: (w * newH) / h,
+        h: newH,
+      }
+    }
+    return {
+      w: newW,
+      h: (h * newW) / w,
+    }
+  }
+
+  render() {
+    const { toggle, url } = this.state
+    const imgSize = this.imageSize(this.state.width, this.state.height)
+    console.log({ imgSize, width, height }, this.state.width, this.state.height)
+    return (
+      <MyMom>
+        <Masonry images={images} />
+        <Heading1>Clickable Masonry</Heading1>
+        <Masonry images={images} onPress={this.setModalImg}>
+          <Modal
+            toggle={() => this.setState({ toggle: !toggle })}
+            isOpen={toggle}
+            style={{}}
+          >
+            <Image
+              source={{ uri: url }}
+              style={{ width: imgSize.w, height: imgSize.h }}
+            />
+          </Modal>
+        </Masonry>
+      </MyMom>
+    )
+  }
+}

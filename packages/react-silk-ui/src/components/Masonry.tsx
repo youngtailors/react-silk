@@ -1,22 +1,29 @@
 import * as React from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableWithoutFeedback } from 'react-native'
 
 export interface Props {
   images: string[]
   col?: number
+  onPress?: (arg0: { url: string; height: number; width: number }) => void
+}
+
+const defaultProps = {
+  col: 3,
+  onPress: () => {},
 }
 
 interface State {
   width: number
-  columns: { height: number; images: { url: string; height: number }[] }[]
+  columns: {
+    height: number
+    images: { url: string; height: number; width: number }[]
+  }[]
 }
 
 const COLUMN_WIDTH = 300
 
 export class Masonry extends React.Component<Props, State> {
-  static defaultProps = {
-    col: 3,
-  }
+  static defaultProps = defaultProps
 
   constructor(props: Props) {
     super(props)
@@ -47,6 +54,7 @@ export class Masonry extends React.Component<Props, State> {
           cols[index].images.push({
             url: img,
             height: imgHeight,
+            width: COLUMN_WIDTH,
           })
           this.setState({ columns: cols })
         },
@@ -73,6 +81,8 @@ export class Masonry extends React.Component<Props, State> {
   }
 
   render() {
+    const onPress = this.props.onPress!
+    console.log(onPress.length)
     return (
       <View onLayout={this.onLayout} style={{ flexDirection: 'row' }}>
         {this.state.columns.map((col, index) => (
@@ -80,7 +90,17 @@ export class Masonry extends React.Component<Props, State> {
             {col.images.map((img, id) => {
               const colWidth = this.columnWidth()
               const height = (img.height * colWidth) / COLUMN_WIDTH
-              return (
+              return onPress.length === 1 ? (
+                <TouchableWithoutFeedback
+                  onPress={() => onPress(img)}
+                  key={`col${index}_img${id}`}
+                >
+                  <Image
+                    source={{ uri: img.url }}
+                    style={{ width: colWidth, height, margin: 5 }}
+                  />
+                </TouchableWithoutFeedback>
+              ) : (
                 <Image
                   source={{ uri: img.url }}
                   style={{ width: colWidth, height, margin: 5 }}
@@ -90,6 +110,7 @@ export class Masonry extends React.Component<Props, State> {
             })}
           </View>
         ))}
+        {this.props.children}
       </View>
     )
   }
