@@ -34,7 +34,7 @@ export default class MasonryDemo extends React.Component {
   }
 
   imageSize(w: number, h: number) {
-    const newW = width - 30
+    const newW = width - 30 // 30 is padding  15 x 2 for show image in modal
     const newH = height - 30
     if (w / newW < h / newH) {
       return {

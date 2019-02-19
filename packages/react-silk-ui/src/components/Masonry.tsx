@@ -20,7 +20,7 @@ interface State {
   }[]
 }
 
-const COLUMN_WIDTH = 300
+const COLUMN_WIDTH = 300 // on component didmount, layout wontbe loaded so it's width = 0, cannot get column width => define a value to calculate standard image height
 
 export class Masonry extends React.Component<Props, State> {
   static defaultProps = defaultProps
