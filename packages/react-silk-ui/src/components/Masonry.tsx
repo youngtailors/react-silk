@@ -1,22 +1,16 @@
 import * as React from 'react'
-import {
-  View,
-  Text,
-  Image,
-  TouchableWithoutFeedback,
-  StyleSheet,
-} from 'react-native'
+import { View, Image, TouchableWithoutFeedback, StyleSheet } from 'react-native'
 
 export interface Props {
   images: string[]
   col?: number
-  padding?: number
+  gap?: number
   onPress?: (arg0: { url: string; height: number; width: number }) => void
 }
 
 const defaultProps = {
   col: 3,
-  padding: 10,
+  gap: 10,
   onPress: null,
 }
 
@@ -95,16 +89,19 @@ export class Masonry extends React.Component<Props, State> {
 
   columnWidth() {
     const col = this.props.col!
-    const padding = this.props.padding!
-    return this.state.width / col - padding
+    const gap = this.props.gap!
+    return this.state.width / col - gap
   }
 
   render() {
     const onPress = this.props.onPress!
-    const padding = this.props.padding!
+    const gap = this.props.gap!
     const colWidth = this.columnWidth()
     return (
-      <View onLayout={this.onLayout} style={style.masonryWrapper}>
+      <View
+        onLayout={this.onLayout}
+        style={[style.masonryWrapper, { marginHorizontal: -gap / 2 }]}
+      >
         {this.state.columns.map((col, index) => (
           <View style={style.column} key={`column${index}`}>
             {col.images.map((img, id) => {
@@ -116,13 +113,13 @@ export class Masonry extends React.Component<Props, State> {
                 >
                   <Image
                     source={{ uri: img.url }}
-                    style={{ width: colWidth, height, margin: padding / 2 }}
+                    style={{ width: colWidth, height, margin: gap / 2 }}
                   />
                 </TouchableWithoutFeedback>
               ) : (
                 <Image
                   source={{ uri: img.url }}
-                  style={{ width: colWidth, height, margin: padding / 2 }}
+                  style={{ width: colWidth, height, margin: gap / 2 }}
                   key={`col${index}_img${id}`}
                 />
               )
