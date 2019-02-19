@@ -15,6 +15,7 @@ import { Icon, installIconComponent } from './components/Icon'
 import { Dropdown } from './components/Dropdown'
 import { DropdownButton } from './components/Dropdown/Button'
 import { DropdownItem } from './components/Dropdown/Item'
+import { Carousel } from './components/Carousel'
 import * as Colors from './components/Colors'
 import { Masonry } from './components/Masonry'
 import { InputPin } from './components/InputPin'
@@ -38,6 +39,7 @@ export {
   DropdownButton,
   DropdownItem,
   Masonry,
+  Carousel,
   InputPin,
 }
 
@@ -60,5 +62,6 @@ export default {
   DropdownButton,
   DropdownItem,
   Masonry,
+  Carousel,
   InputPin,
 }

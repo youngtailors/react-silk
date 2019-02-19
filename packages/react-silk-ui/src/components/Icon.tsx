@@ -9,7 +9,6 @@ export interface Props {
 }
 
 let IconComponent = (props: Props) => {
-  console.warn('Fallback to default icon component')
   return (
     <View>
       <Text>{props.name}</Text>

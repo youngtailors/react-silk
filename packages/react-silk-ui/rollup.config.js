@@ -20,6 +20,6 @@ export default [
       },
     ],
     plugins,
-    external: ['react', 'react-native'],
+    external: ['react', 'react-native', 'react-spring/renderprops'],
   },
 ]
