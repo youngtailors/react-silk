@@ -16,8 +16,6 @@ const images = [
   'https://images.unsplash.com/photo-1550359542-5c8b880dabdf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
 ]
 
-const { width, height } = Dimensions.get('window')
-
 export default class MasonryDemo extends React.Component {
   state = {
     toggle: false,
@@ -33,27 +31,34 @@ export default class MasonryDemo extends React.Component {
     })
   }
 
-  imageSize(w: number, h: number) {
-    const newW = width - 30 // 30 is padding  15 x 2 for show image in modal
-    const newH = height - 30
-    if (w / newW < h / newH) {
+  imageSize(
+    width: number,
+    height: number,
+    windowWidth: number,
+    windowHeight: number,
+  ) {
+    const availableWidth = windowWidth - 30 // 30 is padding  15 x 2 for show image in modal, minus padding for available size of image
+    const availableHeight = windowHeight - 30
+    if (width / availableWidth < height / availableHeight) {
       return {
-        w: (w * newH) / h,
-        h: newH,
+        w: (width * availableHeight) / height,
+        h: availableHeight,
       }
     }
     return {
-      w: newW,
-      h: (h * newW) / w,
+      w: availableWidth,
+      h: (height * availableWidth) / width,
     }
   }
 
   render() {
-    const { toggle, url } = this.state
-    const imgSize = this.imageSize(this.state.width, this.state.height)
+    const { toggle, url, width, height } = this.state
+    const windowWidth = Dimensions.get('window').width
+    const windowHeight = Dimensions.get('window').height
+    const imgSize = this.imageSize(width, height, windowWidth, windowHeight)
     return (
       <MyMom>
-        <Masonry images={images} />
+        <Masonry images={images} col={4} />
         <Heading1>Clickable Masonry</Heading1>
         <Masonry images={images} onPress={this.setModalImg}>
           <Modal

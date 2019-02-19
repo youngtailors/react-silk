@@ -4,12 +4,14 @@ import { View, Text, Image, TouchableWithoutFeedback } from 'react-native'
 export interface Props {
   images: string[]
   col?: number
+  padding?: number
   onPress?: (arg0: { url: string; height: number; width: number }) => void
 }
 
 const defaultProps = {
   col: 3,
-  onPress: () => {},
+  padding: 10,
+  onPress: null,
 }
 
 interface State {
@@ -35,8 +37,9 @@ export class Masonry extends React.Component<Props, State> {
 
   async componentDidMount() {
     const columns = []
-    const { col } = this.props
-    for (let i = 0; i < 3; i++) {
+    const col = this.props.col!
+    console.log('column:', col)
+    for (let i = 0; i < col; i++) {
       columns.push({
         height: 0,
         images: [],
@@ -77,32 +80,35 @@ export class Masonry extends React.Component<Props, State> {
   }
 
   columnWidth() {
-    return this.state.width / 3 - 10
+    const col = this.props.col!
+    const padding = this.props.padding!
+    return this.state.width / col - padding
   }
 
   render() {
     const onPress = this.props.onPress!
+    const padding = this.props.padding!
+    const colWidth = this.columnWidth()
     return (
       <View onLayout={this.onLayout} style={{ flexDirection: 'row' }}>
         {this.state.columns.map((col, index) => (
           <View style={{ flex: 1 }} key={`column${index}`}>
             {col.images.map((img, id) => {
-              const colWidth = this.columnWidth()
               const height = (img.height * colWidth) / COLUMN_WIDTH
-              return onPress.length === 1 ? (
+              return onPress !== null ? (
                 <TouchableWithoutFeedback
                   onPress={() => onPress(img)}
                   key={`col${index}_img${id}`}
                 >
                   <Image
                     source={{ uri: img.url }}
-                    style={{ width: colWidth, height, margin: 5 }}
+                    style={{ width: colWidth, height, margin: padding / 2 }}
                   />
                 </TouchableWithoutFeedback>
               ) : (
                 <Image
                   source={{ uri: img.url }}
-                  style={{ width: colWidth, height, margin: 5 }}
+                  style={{ width: colWidth, height, margin: padding / 2 }}
                   key={`col${index}_img${id}`}
                 />
               )
