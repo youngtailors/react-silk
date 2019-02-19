@@ -28,10 +28,10 @@ export default () => (
       <Link to="/components/dropdowns">Dropdowns</Link>
     </NavItem>
     <NavItem>
-      <Link to="/components/masonry">Masonry</Link>
+      <Link to="/components/carousels">Carousels</Link>
     </NavItem>
     <NavItem>
-      <Link to="/components/carousels">Carousels</Link>
+      <Link to="/components/masonry">Masonry</Link>
     </NavItem>
     <NavItem>
       <Link to="/components/input_pins">Input Pins</Link>
