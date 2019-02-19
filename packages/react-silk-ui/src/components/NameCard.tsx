@@ -3,36 +3,36 @@ import { View, Image, StyleSheet, Dimensions } from 'react-native'
 import { Text } from './Text'
 import Colors from './Colors'
 
-const { width } = Dimensions.get('window')
-
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 15,
+    flex: 1,
+    paddingVertical: 30,
     paddingHorizontal: 10,
-    width,
-    backgroundColor: Colors.light,
+    backgroundColor: Colors.white,
     flexDirection: 'row',
-    elevation: 4,
+    borderWidth: 1,
+    borderRadius: 2,
+    borderColor: Colors.smokeWhite,
+    borderBottomWidth: 0,
+    shadowColor: Colors.gray,
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.5,
-    shadowOffset: { width: 1, height: 2 },
-    shadowColor: Colors.light,
+    shadowRadius: 2,
+    elevation: 1,
   },
   imageWrapper: {
     flex: 3,
-    padding: 3,
   },
   contentWrapper: {
     flex: 7,
-    padding: 3,
   },
   image: {
-    alignSelf: 'center',
     width: '100%',
     height: '100%',
   },
   title: {
     fontSize: 20,
-    color: Colors.primary,
+    color: Colors.dark,
     fontWeight: '500',
   },
   subTitle: {
@@ -53,7 +53,7 @@ export const NameCard = ({ image, title, subTitle, rtl }: Props) => {
     <View style={{ flex: 1 }}>
       {rtl ? (
         <View style={styles.container}>
-          <View style={styles.contentWrapper}>
+          <View style={[styles.contentWrapper, { paddingRight: 10 }]}>
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.subTitle}>{subTitle}</Text>
           </View>
