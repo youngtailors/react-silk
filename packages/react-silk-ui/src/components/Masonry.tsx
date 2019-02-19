@@ -1,5 +1,11 @@
 import * as React from 'react'
-import { View, Text, Image, TouchableWithoutFeedback } from 'react-native'
+import {
+  View,
+  Text,
+  Image,
+  TouchableWithoutFeedback,
+  StyleSheet,
+} from 'react-native'
 
 export interface Props {
   images: string[]
@@ -22,6 +28,15 @@ interface State {
   }[]
 }
 
+const style = StyleSheet.create({
+  masonryWrapper: {
+    flexDirection: 'row',
+  },
+  column: {
+    flex: 1,
+  },
+})
+
 const COLUMN_WIDTH = 300 // on component didmount, layout wontbe loaded so it's width = 0, cannot get column width => define a value to calculate standard image height
 
 export class Masonry extends React.Component<Props, State> {
@@ -38,7 +53,6 @@ export class Masonry extends React.Component<Props, State> {
   async componentDidMount() {
     const columns = []
     const col = this.props.col!
-    console.log('column:', col)
     for (let i = 0; i < col; i++) {
       columns.push({
         height: 0,
@@ -90,9 +104,9 @@ export class Masonry extends React.Component<Props, State> {
     const padding = this.props.padding!
     const colWidth = this.columnWidth()
     return (
-      <View onLayout={this.onLayout} style={{ flexDirection: 'row' }}>
+      <View onLayout={this.onLayout} style={style.masonryWrapper}>
         {this.state.columns.map((col, index) => (
-          <View style={{ flex: 1 }} key={`column${index}`}>
+          <View style={style.column} key={`column${index}`}>
             {col.images.map((img, id) => {
               const height = (img.height * colWidth) / COLUMN_WIDTH
               return onPress !== null ? (

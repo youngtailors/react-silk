@@ -41,13 +41,13 @@ export default class MasonryDemo extends React.Component {
     const availableHeight = windowHeight - 30
     if (width / availableWidth < height / availableHeight) {
       return {
-        w: (width * availableHeight) / height,
-        h: availableHeight,
+        width: (width * availableHeight) / height,
+        height: availableHeight,
       }
     }
     return {
-      w: availableWidth,
-      h: (height * availableWidth) / width,
+      width: availableWidth,
+      height: (height * availableWidth) / width,
     }
   }
 
@@ -68,7 +68,7 @@ export default class MasonryDemo extends React.Component {
           >
             <Image
               source={{ uri: url }}
-              style={{ width: imgSize.w, height: imgSize.h }}
+              style={{ width: imgSize.width, height: imgSize.height }}
             />
           </Modal>
         </Masonry>
