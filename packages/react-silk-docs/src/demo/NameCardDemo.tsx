@@ -21,7 +21,7 @@ export default () => (
         <NameCard
           image="https://media.laodong.vn/storage/newsportal/2018/9/28/633320/CEO-Facebook.jpg"
           title="Mark Zuckerberg"
-          subTitle="markzuckerberg123456789@gmail.com"
+          subTitle="markzuckerbergaaaaasdass@gmail.com"
           rtl={true}
         />
       </div>

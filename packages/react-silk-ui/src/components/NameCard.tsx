@@ -1,12 +1,16 @@
 import * as React from 'react'
-import { View, Image, StyleSheet, Dimensions } from 'react-native'
-import { Text } from './Text'
+import { View, Image, StyleSheet } from 'react-native'
+import { Heading6, Text } from './Text'
 import Colors from './Colors'
+import Spacing from './Spacing'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 30,
+  },
+  nameCardWrapper: {
+    flex: 1,
+    paddingVertical: 15,
     paddingHorizontal: 10,
     backgroundColor: Colors.white,
     flexDirection: 'row',
@@ -22,22 +26,22 @@ const styles = StyleSheet.create({
   },
   imageWrapper: {
     flex: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   contentWrapper: {
     flex: 7,
+    justifyContent: 'center',
   },
   image: {
-    width: '100%',
-    height: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
   },
-  title: {
-    fontSize: 20,
-    color: Colors.dark,
-    fontWeight: '500',
-  },
-  subTitle: {
-    fontSize: 16,
-    color: Colors.gray,
+  orderReverse: {
+    flexDirection: 'row-reverse',
   },
 })
 
@@ -49,37 +53,27 @@ export interface Props {
 }
 
 export const NameCard = ({ image, title, subTitle, rtl }: Props) => {
+  const orderStyles = []
+  if (!rtl) {
+    orderStyles.push(styles.orderReverse)
+  }
   return (
-    <View style={{ flex: 1 }}>
-      {rtl ? (
-        <View style={styles.container}>
-          <View style={[styles.contentWrapper, { paddingRight: 10 }]}>
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.subTitle}>{subTitle}</Text>
-          </View>
-          <View style={styles.imageWrapper}>
-            <Image
-              style={styles.image}
-              resizeMode="contain"
-              source={{ uri: image }}
-            />
-          </View>
+    <View style={styles.container}>
+      <View style={[styles.nameCardWrapper, ...orderStyles]}>
+        <View
+          style={[styles.contentWrapper, rtl ? Spacing.pr10 : Spacing.pl10]}
+        >
+          <Heading6>{title}</Heading6>
+          <Text>{subTitle}</Text>
         </View>
-      ) : (
-        <View style={styles.container}>
-          <View style={styles.imageWrapper}>
-            <Image
-              style={styles.image}
-              resizeMode="contain"
-              source={{ uri: image }}
-            />
-          </View>
-          <View style={[styles.contentWrapper, { paddingLeft: 10 }]}>
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.subTitle}>{subTitle}</Text>
-          </View>
+        <View style={styles.imageWrapper}>
+          <Image
+            style={styles.image}
+            resizeMode="cover"
+            source={{ uri: image }}
+          />
         </View>
-      )}
+      </View>
     </View>
   )
 }
