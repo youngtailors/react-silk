@@ -14,14 +14,14 @@ export default () => (
     <NameCardWrapper>
       <div>
         <NameCard
-          image="https://vnn-imgs-f.vgcloud.vn/2018/04/12/17/bill-gates-la-nguoi-dan-ong-duoc-nguong-mo-nhat-the-gioi.jpg"
+          image="https://avatars1.githubusercontent.com/u/5728560?s=460&v=4"
           title="Bill Gate"
           subTitle="goblin@gmail.com"
         />
         <NameCard
-          image="https://media.laodong.vn/storage/newsportal/2018/9/28/633320/CEO-Facebook.jpg"
+          image="https://avatars3.githubusercontent.com/u/24296018?s=460&v=4"
           title="Mark Zuckerberg"
-          subTitle="markzuckerbergaaaaasdass@gmail.com"
+          subTitle="jetaimefrc@gmail.com"
           rtl={true}
         />
       </div>

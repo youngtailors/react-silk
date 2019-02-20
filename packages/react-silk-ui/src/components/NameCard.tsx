@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { View, Image, StyleSheet } from 'react-native'
-import { Heading6, Text } from './Text'
+import { Heading5, Heading6, Text } from './Text'
 import Colors from './Colors'
 import Spacing from './Spacing'
 
@@ -10,38 +10,25 @@ const styles = StyleSheet.create({
   },
   nameCardWrapper: {
     flex: 1,
-    paddingVertical: 15,
-    paddingHorizontal: 10,
+    padding: 10,
     backgroundColor: Colors.white,
     flexDirection: 'row',
     borderWidth: 1,
-    borderRadius: 2,
-    borderColor: Colors.smokeWhite,
-    borderBottomWidth: 0,
-    shadowColor: Colors.gray,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 1,
-  },
-  imageWrapper: {
-    flex: 3,
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderColor: Colors.gray,
   },
   contentWrapper: {
-    flex: 7,
+    flex: 1,
     justifyContent: 'center',
   },
   image: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
+    width: 80,
+    height: 80,
   },
   orderReverse: {
     flexDirection: 'row-reverse',
+  },
+  title: {
+    marginBottom: 0,
   },
 })
 
@@ -63,16 +50,10 @@ export const NameCard = ({ image, title, subTitle, rtl }: Props) => {
         <View
           style={[styles.contentWrapper, rtl ? Spacing.pr10 : Spacing.pl10]}
         >
-          <Heading6>{title}</Heading6>
+          <Heading6 style={styles.title}>{title}</Heading6>
           <Text>{subTitle}</Text>
         </View>
-        <View style={styles.imageWrapper}>
-          <Image
-            style={styles.image}
-            resizeMode="cover"
-            source={{ uri: image }}
-          />
-        </View>
+        <Image style={styles.image} source={{ uri: image }} />
       </View>
     </View>
   )
