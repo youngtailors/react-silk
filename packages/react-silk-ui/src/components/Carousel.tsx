@@ -89,10 +89,23 @@ export class Carousel extends React.Component<Props> {
     isRight: false,
   }
 
+  slideHandle: any
+  autoHandle: any
   async componentDidMount() {
     const { interval, autoSlide } = this.props
     await this.autoSlide(autoSlide, interval)
-    await setTimeout(() => this.componentDidMount(), interval)
+    this.autoHandle = await setTimeout(() => this.componentDidMount(), interval)
+  }
+
+  componentWillUnmount() {
+    if (this.autoSlide) {
+      clearTimeout(this.autoHandle)
+      this.autoHandle = 0
+    }
+    if (this.slideHandle) {
+      clearTimeout(this.slideHandle)
+      this.slideHandle = 0
+    }
   }
 
   autoSlide = (isAuto: boolean, interval: number) => {
@@ -107,7 +120,7 @@ export class Carousel extends React.Component<Props> {
         fIndex++
         this.setState({ isRight: false })
       }
-      setTimeout(() => {
+      this.slideHandle = setTimeout(() => {
         this.setState({ index: fIndex })
       }, interval)
     }
