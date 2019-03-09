@@ -20,9 +20,9 @@
     "test:coverage-ci": "jest --ci --runInBand --coverage --config \"./config/jest.config.js\""
   },
   "peerDependencies": {
-    "react": "^16.7.0",
-    "react-art": "^16.7.0",
-    "react-native-web": "^0.10.0",
-    "react-spring": "^8.0.5"
+    "react": "^16.8.4",
+    "react-art": "^16.8.4",
+    "react-native-web": "^0.10.1",
+    "react-spring": "^8.0.14"
   }
 }
