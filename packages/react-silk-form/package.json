@@ -1,6 +1,6 @@
 {
   "name": "react-silk-form",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "main": "dist/react-silk-form.js",
   "module": "dist/react-silk-form.es.js",
