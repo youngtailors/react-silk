@@ -42,13 +42,13 @@ const plugins = [
 
 export default [
   {
-    input: reslv('src/index.ts'),
+    input: reslv('src/index.tsx'),
     output: { format: 'es', file: reslv('dist/react-silk-form.es.js') },
     external,
     plugins: [babel(getBabelOptions({ useESModules: true })), ...plugins],
   },
   {
-    input: reslv('src/index.ts'),
+    input: reslv('src/index.tsx'),
     output: {
       format: 'cjs',
       file: reslv('dist/react-silk-form.js'),

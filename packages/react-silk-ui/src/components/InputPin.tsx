@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 
 export interface Props {
   length?: number
-  onChange?: (arg: string) => void
+  onChanged?: (arg: string) => void
 }
 
 export interface State {
@@ -33,7 +33,7 @@ export class InputPin extends React.Component<Props, State> {
   }
 
   setRef: any
-  onChange: any
+  onChanged: any
 
   constructor(props: Props) {
     super(props)
@@ -55,7 +55,7 @@ export class InputPin extends React.Component<Props, State> {
       }))
     }
 
-    this.onChange = (index: string, text: string) => {
+    this.onChanged = (index: string, text: string) => {
       if (!text) {
         return
       }
@@ -64,12 +64,12 @@ export class InputPin extends React.Component<Props, State> {
           data: { ...prevState.data, [index]: text[text.length - 1] },
         }),
         () => {
-          if (this.props.onChange) {
+          if (this.props.onChanged) {
             let value: string = ''
             for (let i = 0; i < Number(props.length); i += 1) {
               value += this.state.data[i] || ' '
             }
-            this.props.onChange(value)
+            this.props.onChanged(value)
           }
         },
       )
@@ -89,7 +89,7 @@ export class InputPin extends React.Component<Props, State> {
             style={styles.input}
             inputStyle={styles.inputStyle}
             setRef={ref => this.setRef(index, ref)}
-            onChange={text => this.onChange(index, text)}
+            onChange={text => this.onChanged(index, text)}
             value={this.state.data[index] || ''}
           />
         ))}

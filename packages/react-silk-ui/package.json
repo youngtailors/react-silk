@@ -12,7 +12,7 @@
   "scripts": {
     "prebuild": "rimraf dist && tsc",
     "build": "rollup -c",
-    "dev": "rollup -cw",
+    "dev": "rollup -cw && tsc -w",
     "tsc": "tsc",
     "lint": "eslint --ext .ts,.tsx .",
     "test": "jest --config \"./config/jest.config.js\"",

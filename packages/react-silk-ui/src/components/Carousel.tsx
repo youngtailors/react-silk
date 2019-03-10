@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import { Transition, animated } from 'react-spring/renderprops'
+import { Transition, animated } from 'react-spring/renderprops.cjs'
 import Colors from './Colors'
 import { Icon } from './Icon'
 import iconMap from './iconMap'
