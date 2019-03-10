@@ -10,6 +10,7 @@ export interface FormProps {
   fields: Array<{
     name: string
     label?: string
+    secureTextEntry?: boolean
   }>
   onSubmit?: (values: { [key: string]: string }) => void
 }
@@ -60,7 +61,7 @@ export class Form extends React.PureComponent<FormProps, FormState> {
               key={field.name}
               {...field}
               value={this.state.values[field.name]}
-              onChanged={value => this.fieldChanged(field.name, value)}
+              onChanged={(value: any) => this.fieldChanged(field.name, value)}
             />
           )
         })}

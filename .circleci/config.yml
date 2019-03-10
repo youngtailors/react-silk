@@ -50,6 +50,9 @@ jobs:
           keys:
             - node_modules-{{ checksum "yarn.lock" }}
       - run:
+          name: Build library
+          command: yarn build:lib
+      - run:
           name: Run all tests with coverage
           command: yarn test:coverage-ci
       - codecov/upload:

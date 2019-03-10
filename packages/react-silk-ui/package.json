@@ -10,9 +10,10 @@
     "dist"
   ],
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist && tsc",
     "build": "rollup -c",
-    "dev": "rollup -cw",
+    "dev": "rollup -cw && tsc -w",
+    "tsc": "tsc",
     "lint": "eslint --ext .ts,.tsx .",
     "test": "jest --config \"./config/jest.config.js\"",
     "test:watch": "jest --watch --config \"./config/jest.config.js\"",
@@ -24,5 +25,6 @@
     "react-art": "^16.8.4",
     "react-native-web": "^0.10.1",
     "react-spring": "^8.0.14"
-  }
+  },
+  "devDependencies": {}
 }

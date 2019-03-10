@@ -51,7 +51,7 @@ export interface InputProps extends TextInputProps {
   inputStyle?: any
 }
 
-export const Input = ({
+export const Input: React.SFC<InputProps> = ({
   label,
   placeholder,
   errorMessage,

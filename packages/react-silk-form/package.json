@@ -10,17 +10,22 @@
     "dist"
   ],
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist && tsc",
     "build": "rollup -c",
-    "dev": "rollup -cw",
+    "dev": "rollup -cw && tsc -w",
+    "tsc": "tsc",
     "test": "jest --config \"./config/jest.config.js\"",
     "test:watch": "jest --watch --config \"./config/jest.config.js\"",
     "test:coverage": "jest --coverage --config \"./config/jest.config.js\"",
     "test:coverage-ci": "jest --ci --runInBand --coverage --config \"./config/jest.config.js\""
   },
+  "devDependencies": {
+    "react-silk-ui": "^0.1.3"
+  },
   "peerDependencies": {
     "react": "^16.7.0",
     "react-art": "^16.7.0",
-    "react-native-web": "^0.10.0"
+    "react-native-web": "^0.10.0",
+    "react-silk-ui": "^0.1.3"
   }
 }
