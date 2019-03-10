@@ -125,3 +125,4 @@ dist
 
 .idea
 .vscode
+.size-snapshot.json

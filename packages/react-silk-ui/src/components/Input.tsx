@@ -55,6 +55,7 @@ export const Input = ({
   style,
   setRef,
   inputStyle,
+  ...props
 }: Props) => {
   const inputStyles = []
   if (errorMessage) {
@@ -80,6 +81,7 @@ export const Input = ({
           placeholder={placeholder}
           onChangeText={onChange}
           value={value}
+          {...props}
         />
       )}
       {errorMessage && <Text style={styles.errorMessage}>{errorMessage}</Text>}
