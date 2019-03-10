@@ -1,5 +1,11 @@
 import * as React from 'react'
-import { View, StyleSheet, TextInput, ViewStyle } from 'react-native'
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  ViewStyle,
+  TextInputProps,
+} from 'react-native'
 import { Text } from './Text'
 import Colors from './Colors'
 
@@ -33,11 +39,11 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface Props {
+export interface InputProps extends TextInputProps {
   label?: string
   placeholder?: string
   errorMessage?: string
-  onChange?: (arg: string) => void
+  onChanged?: (arg: string) => void
   disabled?: boolean
   value?: string
   style?: ViewStyle
@@ -50,13 +56,13 @@ export const Input = ({
   placeholder,
   errorMessage,
   disabled,
-  onChange,
+  onChanged,
   value,
   style,
   setRef,
   inputStyle,
   ...props
-}: Props) => {
+}: InputProps) => {
   const inputStyles = []
   if (errorMessage) {
     inputStyles.push(styles.errorBorder)
@@ -79,7 +85,7 @@ export const Input = ({
           style={[styles.textInput, ...inputStyles]}
           underlineColorAndroid="transparent"
           placeholder={placeholder}
-          onChangeText={onChange}
+          onChangeText={onChanged}
           value={value}
           {...props}
         />

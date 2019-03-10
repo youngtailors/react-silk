@@ -27,14 +27,14 @@ export default class extends React.PureComponent {
           <Demo>
             <InputPin
               length={4}
-              onChange={pin => this.setState({ pin1: pin })}
+              onChanged={pin => this.setState({ pin1: pin })}
             />
             <strong>{this.state.pin1}</strong>
           </Demo>
           <Demo>
             <InputPin
               length={6}
-              onChange={pin => this.setState({ pin2: pin })}
+              onChanged={pin => this.setState({ pin2: pin })}
             />
             <strong>{this.state.pin2}</strong>
           </Demo>

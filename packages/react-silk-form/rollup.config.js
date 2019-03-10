@@ -7,7 +7,7 @@ const plugins = [typescript()]
 
 export default [
   {
-    input: reslv('src/index.ts'),
+    input: reslv('src/index.tsx'),
     output: [
       {
         format: 'es',
