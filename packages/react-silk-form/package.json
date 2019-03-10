@@ -22,6 +22,7 @@
   "peerDependencies": {
     "react": "^16.7.0",
     "react-art": "^16.7.0",
-    "react-native-web": "^0.10.0"
+    "react-native-web": "^0.10.0",
+    "react-silk-ui": "^0.1.3"
   }
 }
