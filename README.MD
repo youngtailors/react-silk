@@ -8,7 +8,7 @@
 | Package                                          | Version                                                                |
 | ------------------------------------------------ | ---------------------------------------------------------------------- |
 | **[react-silk-ui](/packages/react-silk-ui)**     | ![](https://img.shields.io/npm/v/react-silk-ui.svg?style=flat)         |
-| **[react-silk-form](/packages/react-silk-form)**   | Working in progress                                                    |
+| **[react-silk-form](/packages/react-silk-form)** | ![](https://img.shields.io/npm/v/react-silk-form.svg?style=flat)       |
 | **[react-silk-docs](/packages/react-silk-docs)** | React Silk [Documentation](https://youngtailors.github.io/react-silk/) |
 
 ## Roadmap
