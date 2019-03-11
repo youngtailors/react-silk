@@ -23,7 +23,6 @@
   "peerDependencies": {
     "react": "^16.8.4",
     "react-art": "^16.8.4",
-    "react-native-web": "^0.10.1",
-    "react-spring": "^8.0.14"
+    "react-native-web": "^0.10.1"
   }
 }

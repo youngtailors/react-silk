@@ -70,7 +70,6 @@
     "react-art": "^16.8.4",
     "react-native-web": "^0.10.1",
     "react-silk-jest-preset": "^0.1.1",
-    "react-spring": "^8.0.14",
     "react-test-renderer": "^16.8.4",
     "rimraf": "^2.6.3",
     "rollup": "^1.6.0",
