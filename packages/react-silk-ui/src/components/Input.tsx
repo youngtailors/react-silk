@@ -7,7 +7,7 @@ import {
   TextInputProps,
 } from 'react-native'
 import { Text } from './Text'
-import Colors from './Colors'
+import { Colors } from './Colors'
 
 const styles = StyleSheet.create({
   container: {
