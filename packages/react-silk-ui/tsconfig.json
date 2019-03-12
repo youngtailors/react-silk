@@ -6,5 +6,6 @@
     "declarationDir": "dist",
     "declarationMap": true,
     "emitDeclarationOnly": true
-  }
+  },
+  "exclude": ["dist"]
 }
