@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Hitbox } from '../Hitbox'
-import Colors from '../Colors'
+import { Colors } from '../Colors'
 
 const styles = StyleSheet.create({
   dropdown: {

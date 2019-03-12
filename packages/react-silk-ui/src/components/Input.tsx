@@ -4,10 +4,11 @@ import {
   StyleSheet,
   TextInput,
   ViewStyle,
+  StyleProp,
   TextInputProps,
 } from 'react-native'
 import { Text } from './Text'
-import Colors from './Colors'
+import { Colors } from './Colors'
 
 const styles = StyleSheet.create({
   container: {
@@ -46,7 +47,7 @@ export interface InputProps extends TextInputProps {
   onChanged?: (arg: string) => void
   disabled?: boolean
   value?: string
-  style?: ViewStyle
+  style?: StyleProp<ViewStyle>
   setRef?: (arg: any) => void
   inputStyle?: any
 }

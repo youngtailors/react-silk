@@ -2,7 +2,7 @@ import * as React from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import { Text } from './Text'
 import sharedStyles from './sharedStyles'
-import Colors from './Colors'
+import { Colors } from './Colors'
 
 const INDICATOR_SIZE = 20
 const styles = StyleSheet.create({
