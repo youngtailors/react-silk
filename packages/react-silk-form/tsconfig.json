@@ -2,10 +2,7 @@
   "extends": "../tsconfig.settings.json",
   "compilerOptions": {
     "rootDir": "src",
-    "declaration": true,
-    "declarationDir": "dist",
-    "declarationMap": true,
-    "emitDeclarationOnly": true
-  },
-  "exclude": ["dist"]
+    "outDir": "dist",
+    "module": "ES2015"
+  }
 }

@@ -10,9 +10,9 @@
     "dist"
   ],
   "scripts": {
-    "prebuild": "rimraf dist && tsc",
+    "prebuild": "rimraf dist",
     "build": "rollup -c",
-    "dev": "concurrently \"rollup -cw\" \"tsc -w\"",
+    "dev": "rollup -cw",
     "tsc": "tsc",
     "test": "jest --config \"./config/jest.config.js\"",
     "test:watch": "jest --watch --config \"./config/jest.config.js\"",
