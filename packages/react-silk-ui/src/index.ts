@@ -17,6 +17,7 @@ import { DropdownButton } from './components/Dropdown/Button'
 import { DropdownItem } from './components/Dropdown/Item'
 import { Colors } from './components/Colors'
 import { InputPin } from './components/InputPin'
+import { NameCard } from './components/NameCard'
 
 export {
   Text,
@@ -37,6 +38,7 @@ export {
   DropdownButton,
   DropdownItem,
   InputPin,
+  NameCard,
 }
 
 export default {
@@ -58,4 +60,5 @@ export default {
   DropdownButton,
   DropdownItem,
   InputPin,
+  NameCard,
 }

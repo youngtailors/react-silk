@@ -33,5 +33,8 @@ export default () => (
     <NavItem>
       <Link to="/components/forms">Forms</Link>
     </NavItem>
+    <NavItem>
+      <Link to="/components/namecard">Name Card</Link>
+    </NavItem>
   </NavItems>
 )
