@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { View, Text, ViewStyle } from 'react-native'
+import { View, Text, StyleProp, ViewStyle } from 'react-native'
 
 export interface Props {
   name: string
   size?: number
   color?: string
-  style?: ViewStyle
+  style?: StyleProp<ViewStyle>
 }
 
 let IconComponent = (props: Props) => {

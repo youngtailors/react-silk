@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ViewStyle,
+  StyleProp,
 } from 'react-native'
 import { Colors } from './Colors'
 import sharedStyles from './sharedStyles'
@@ -21,6 +22,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: 10,
     paddingHorizontal: 15,
+  },
+  alignLeft: {
+    justifyContent: 'flex-start',
   },
   iconRight: {
     marginLeft: 5,
@@ -127,7 +131,7 @@ export interface ButtonProps {
   block?: boolean
   icon?: string
   iconPosition?: 'left' | 'right'
-  style?: ViewStyle
+  style?: StyleProp<ViewStyle>
 }
 
 export const Button = ({
@@ -158,6 +162,10 @@ export const Button = ({
 
   if (style) {
     buttonStyles.push(style)
+  }
+
+  if (icon) {
+    buttonStyles.push(styles.alignLeft)
   }
 
   const node = (
