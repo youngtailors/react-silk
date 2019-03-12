@@ -56,6 +56,7 @@
     "@types/react-native": "^0.57.38",
     "@types/react-test-renderer": "^16.8.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "concurrently": "^4.1.0",
     "eslint": "^5.15.1",
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-typescript-recommended": "^1.4.17",
