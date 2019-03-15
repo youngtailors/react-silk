@@ -107,6 +107,9 @@ const styles = StyleSheet.create({
   buttonBorder: {
     borderWidth: 1,
   },
+  hasRightIcon: {
+    flexDirection: 'row-reverse',
+  },
 })
 
 const lightVariants = ['light', 'link']
@@ -132,6 +135,8 @@ export interface ButtonProps {
   icon?: string
   iconPosition?: 'left' | 'right'
   style?: StyleProp<ViewStyle>
+  iconStyle?: StyleProp<ViewStyle>
+  textStyle?: StyleProp<ViewStyle>
 }
 
 export const Button = ({
@@ -144,6 +149,8 @@ export const Button = ({
   icon,
   iconPosition,
   style,
+  iconStyle,
+  textStyle,
 }: ButtonProps) => {
   const buttonStyles = [
     styles.buttonBorder,
@@ -160,33 +167,39 @@ export const Button = ({
     buttonStyles.push(styles.disabledButton)
   }
 
+  if (icon) {
+    buttonStyles.push(styles.alignLeft)
+  }
+  const iconStyles = []
+  if (iconStyle) {
+    iconStyles.push(iconStyle)
+  }
+  if (iconPosition === 'left') {
+    iconStyles.push(styles.iconLeft)
+  } else if (iconPosition === 'right') {
+    buttonStyles.push(styles.hasRightIcon)
+    iconStyles.push(styles.iconRight)
+  }
+
   if (style) {
     buttonStyles.push(style)
   }
 
-  if (icon) {
-    buttonStyles.push(styles.alignLeft)
+  if (textStyle) {
+    textStyles.push(textStyle)
   }
 
   const node = (
     <View style={[styles.button, ...buttonStyles]}>
-      {icon && iconPosition === 'left' && (
+      {icon && (
         <Icon
-          style={styles.iconLeft}
+          style={iconStyle}
           name={icon}
           color={isLightVariant ? Colors.white : Colors.black}
           size={14}
         />
       )}
       <Text style={textStyles}>{children}</Text>
-      {icon && iconPosition === 'right' && (
-        <Icon
-          style={styles.iconRight}
-          name={icon}
-          color={isLightVariant ? Colors.white : Colors.black}
-          size={14}
-        />
-      )}
     </View>
   )
   const containerStyles = []
@@ -208,5 +221,5 @@ Button.defaultProps = {
   ghost: false,
   disabled: false,
   block: false,
-  iconPosition: 'right',
+  iconPosition: 'left',
 }
