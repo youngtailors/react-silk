@@ -1,6 +1,6 @@
 {
   "name": "react-silk-form",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "license": "MIT",
   "main": "dist/react-silk-form.js",
   "module": "dist/react-silk-form.es.js",
@@ -19,7 +19,6 @@
     "test:coverage": "jest --coverage --config \"./config/jest.config.js\"",
     "test:coverage-ci": "jest --ci --runInBand --coverage --config \"./config/jest.config.js\""
   },
-  "devDependencies": {},
   "peerDependencies": {
     "react": "^16.8.4",
     "react-art": "^16.8.4",
