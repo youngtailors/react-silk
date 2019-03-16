@@ -15,10 +15,12 @@ export default React.memo(() => {
           {
             name: 'password',
             label: 'Password',
+            type: 'password'
           },
           {
             name: 'Code',
             label: 'Code',
+            type: 'pin',
           },
         ]}
         onSubmit={setFormValues}
