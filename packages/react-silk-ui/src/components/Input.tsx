@@ -48,55 +48,63 @@ export interface InputProps extends TextInputProps {
   disabled?: boolean
   value?: string
   style?: StyleProp<ViewStyle>
-  setRef?: (arg: any) => void
   inputStyle?: any
+  type?: 'text' | 'password'
+  ref?: React.RefObject<TextInputProps>
 }
 
-export const Input: React.SFC<InputProps> = ({
-  label,
-  placeholder,
-  errorMessage,
-  disabled,
-  onChanged,
-  value,
-  style,
-  setRef,
-  inputStyle,
-  ...props
-}: InputProps) => {
-  const inputStyles = []
-  if (errorMessage) {
-    inputStyles.push(styles.errorBorder)
-  }
-  if (inputStyle) {
-    inputStyles.push(inputStyle)
-  }
-  return (
-    <View style={[styles.container, style]}>
-      {label && <Text style={styles.label}>{label}</Text>}
-      {disabled ? (
-        <View style={[styles.disabledView, ...inputStyles]}>
-          <Text>{value || placeholder}</Text>
-        </View>
-      ) : (
-        <TextInput
-          ref={ref => (setRef ? setRef(ref) : null)}
-          editable
-          maxLength={40}
-          style={[styles.textInput, ...inputStyles]}
-          underlineColorAndroid="transparent"
-          placeholder={placeholder}
-          onChangeText={onChanged}
-          value={value}
-          {...props}
-        />
-      )}
-      {errorMessage && <Text style={styles.errorMessage}>{errorMessage}</Text>}
-    </View>
-  )
-}
+export const Input: React.SFC<InputProps> = React.forwardRef(
+  (
+    {
+      label,
+      placeholder,
+      errorMessage,
+      disabled,
+      onChanged,
+      value,
+      style,
+      inputStyle,
+      ...props
+    }: InputProps,
+    _ref: any,
+  ) => {
+    const inputStyles = []
+    if (errorMessage) {
+      inputStyles.push(styles.errorBorder)
+    }
+    if (inputStyle) {
+      inputStyles.push(inputStyle)
+    }
+    const _defaultRef = React.useRef(null)
+    const ref = _ref || _defaultRef
+    return (
+      <View style={[styles.container, style]}>
+        {label && <Text style={styles.label}>{label}</Text>}
+        {disabled ? (
+          <View style={[styles.disabledView, ...inputStyles]}>
+            <Text>{value || placeholder}</Text>
+          </View>
+        ) : (
+          <TextInput
+            ref={ref}
+            editable
+            maxLength={40}
+            style={[styles.textInput, ...inputStyles]}
+            underlineColorAndroid="transparent"
+            placeholder={placeholder}
+            onChangeText={onChanged}
+            value={value}
+            {...props}
+          />
+        )}
+        {errorMessage && (
+          <Text style={styles.errorMessage}>{errorMessage}</Text>
+        )}
+      </View>
+    )
+  },
+)
 
 Input.defaultProps = {
   disabled: false,
-  setRef: () => {},
 }

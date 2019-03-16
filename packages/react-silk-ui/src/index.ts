@@ -9,7 +9,7 @@ import {
 } from './components/Text'
 import { Button } from './components/Button'
 import { Modal } from './components/Modal'
-import { Input } from './components/Input'
+import { Input, InputProps } from './components/Input'
 import { Checkbox } from './components/Checkbox'
 import { Icon, installIconComponent } from './components/Icon'
 import { Dropdown } from './components/Dropdown'
@@ -37,6 +37,8 @@ export {
   DropdownButton,
   DropdownItem,
   InputPin,
+  // Prop types
+  InputProps,
 }
 
 export default {
