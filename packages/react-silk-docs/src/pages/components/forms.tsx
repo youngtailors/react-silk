@@ -15,7 +15,7 @@ export default React.memo(() => {
           {
             name: 'password',
             label: 'Password',
-            type: 'password'
+            type: 'password',
           },
           {
             name: 'Code',

@@ -80,9 +80,7 @@ export class Form extends React.PureComponent<FormProps, FormState> {
               key={field.name}
               {...inputProps}
               value={this.state.values[field.name]}
-              onChanged={(value: any) =>
-                this.fieldChanged(field.name, value)
-              }
+              onChanged={(value: any) => this.fieldChanged(field.name, value)}
             />
           )
         })}

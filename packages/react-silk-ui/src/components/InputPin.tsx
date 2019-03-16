@@ -97,7 +97,9 @@ export class InputPin extends React.Component<InputPinProps, State> {
   render() {
     return (
       <View style={inputStyles.container}>
-        {this.props.label && <Text style={inputStyles.label}>{this.props.label}</Text>}
+        {this.props.label && (
+          <Text style={inputStyles.label}>{this.props.label}</Text>
+        )}
         <View style={styles.container}>
           {this.localRefs.map((ref, index) => (
             <Input
@@ -112,7 +114,9 @@ export class InputPin extends React.Component<InputPinProps, State> {
           ))}
         </View>
         {this.props.errorMessage && (
-          <Text style={inputStyles.errorMessage}>{this.props.errorMessage}</Text>
+          <Text style={inputStyles.errorMessage}>
+            {this.props.errorMessage}
+          </Text>
         )}
       </View>
     )

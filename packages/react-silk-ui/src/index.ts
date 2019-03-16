@@ -7,7 +7,7 @@ import {
   Heading5,
   Heading6,
 } from './components/Text'
-import { Button } from './components/Button'
+import { Button, ButtonProps } from './components/Button'
 import { Modal } from './components/Modal'
 import { Input, InputProps } from './components/Input'
 import { Checkbox } from './components/Checkbox'
@@ -39,6 +39,7 @@ export {
   InputPin,
   // Prop types
   InputProps,
+  ButtonProps,
 }
 
 export default {
