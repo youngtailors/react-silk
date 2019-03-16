@@ -1,6 +1,6 @@
 {
   "name": "react-silk-example-admin",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": true,
   "dependencies": {
     "@types/react-dom": "^16.8.2",
