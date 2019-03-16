@@ -68,6 +68,7 @@ export class Dropdown extends React.Component<Props, State> {
       })
       containerStyles.push(styles.upZ)
     }
+    // TODO: Update legacy ref, and support mobile
     return (
       <View ref={this._view} style={containerStyles}>
         {this.props.renderButton({

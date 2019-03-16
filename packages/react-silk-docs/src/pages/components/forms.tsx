@@ -19,7 +19,7 @@ export default React.memo(() => {
           },
           {
             name: 'Code',
-            label: 'Code',
+            label: 'Pin code',
             type: 'pin',
           },
         ]}

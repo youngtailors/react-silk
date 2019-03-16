@@ -69,7 +69,7 @@ export class Form extends React.PureComponent<FormProps, FormState> {
                   onChanged={(value: any) =>
                     this.fieldChanged(field.name, value)
                   }
-                  label="Pin code"
+                  label={field.label}
                 />
               )
             default:
