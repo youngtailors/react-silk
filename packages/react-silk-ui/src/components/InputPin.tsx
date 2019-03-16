@@ -6,7 +6,8 @@ import {
   NativeSyntheticEvent,
   TextInputChangeEventData,
 } from 'react-native'
-import { Input } from './Input'
+import { Input, styles as inputStyles } from './Input'
+import { Text } from './Text'
 
 const styles = StyleSheet.create({
   container: {
@@ -23,16 +24,18 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface Props {
+export interface InputPinProps {
   length?: number
   onChanged?: (arg: string) => void
+  label?: string
+  errorMessage?: string
 }
 
 export interface State {
   value: string
 }
 
-export class InputPin extends React.Component<Props, State> {
+export class InputPin extends React.Component<InputPinProps, State> {
   static defaultProps = {
     length: 6,
   }
@@ -41,7 +44,7 @@ export class InputPin extends React.Component<Props, State> {
   onChange: any
   localRefs: Array<React.RefObject<TextInputProps>>
 
-  constructor(props: Props) {
+  constructor(props: InputPinProps) {
     super(props)
     const refs = []
     let value = ''
@@ -93,18 +96,28 @@ export class InputPin extends React.Component<Props, State> {
 
   render() {
     return (
-      <View style={styles.container}>
-        {this.localRefs.map((ref, index) => (
-          <Input
-            ref={ref}
-            key={index}
-            selectTextOnFocus
-            style={styles.input}
-            inputStyle={styles.inputStyle}
-            onChange={e => this.onChange(e, index)}
-            value={this.state.value[index] || ''}
-          />
-        ))}
+      <View style={inputStyles.container}>
+        {this.props.label && (
+          <Text style={inputStyles.label}>{this.props.label}</Text>
+        )}
+        <View style={styles.container}>
+          {this.localRefs.map((ref, index) => (
+            <Input
+              ref={ref}
+              key={index}
+              selectTextOnFocus
+              style={styles.input}
+              inputStyle={styles.inputStyle}
+              onChange={e => this.onChange(e, index)}
+              value={this.state.value[index] || ''}
+            />
+          ))}
+        </View>
+        {this.props.errorMessage && (
+          <Text style={inputStyles.errorMessage}>
+            {this.props.errorMessage}
+          </Text>
+        )}
       </View>
     )
   }

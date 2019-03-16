@@ -10,7 +10,7 @@ import {
 import { Text } from './Text'
 import { Colors } from './Colors'
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     marginBottom: 10,
   },
@@ -49,7 +49,7 @@ export interface InputProps extends TextInputProps {
   value?: string
   style?: StyleProp<ViewStyle>
   inputStyle?: any
-  type?: 'text' | 'password'
+  type?: 'text' | 'password' | 'pin'
   ref?: React.RefObject<TextInputProps>
 }
 

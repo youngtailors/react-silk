@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import { Input, Button, InputProps } from 'react-silk-ui'
+import { Input, Button, InputProps, InputPin } from 'react-silk-ui'
 
 export interface FormInputProps extends InputProps {
   name: string
@@ -20,6 +20,7 @@ export interface FormState {
     [key: string]: string
   }
 }
+
 export class Form extends React.PureComponent<FormProps, FormState> {
   constructor(props: FormProps) {
     super(props)
@@ -56,19 +57,32 @@ export class Form extends React.PureComponent<FormProps, FormState> {
     return (
       <View>
         {this.props.fields.map(field => {
-          switch (field.type) {
-            default:
+          const { type, ...inputProps } = field
+          switch (type) {
+            case 'password':
+              inputProps.secureTextEntry = true
+              break
+            case 'pin':
               return (
-                <Input
+                <InputPin
                   key={field.name}
-                  {...field}
-                  value={this.state.values[field.name]}
                   onChanged={(value: any) =>
                     this.fieldChanged(field.name, value)
                   }
+                  label="Pin code"
                 />
               )
+            default:
+              break
           }
+          return (
+            <Input
+              key={field.name}
+              {...inputProps}
+              value={this.state.values[field.name]}
+              onChanged={(value: any) => this.fieldChanged(field.name, value)}
+            />
+          )
         })}
         {this.props.onSubmit && <Button onPress={this.onSubmit}>Submit</Button>}
       </View>
