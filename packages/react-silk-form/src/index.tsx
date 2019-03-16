@@ -1,17 +1,17 @@
 import React from 'react'
 import { View } from 'react-native'
-import { Input, Button } from 'react-silk-ui'
+import { Input, Button, InputProps } from 'react-silk-ui'
+
+export interface FormInputProps extends InputProps {
+  name: string
+}
 
 export interface FormProps {
   initialValues?: {
     [key: string]: string
   }
   submitting?: boolean
-  fields: Array<{
-    name: string
-    label?: string
-    secureTextEntry?: boolean
-  }>
+  fields: Array<FormInputProps>
   onSubmit?: (values: { [key: string]: string }) => void
 }
 
@@ -56,14 +56,19 @@ export class Form extends React.PureComponent<FormProps, FormState> {
     return (
       <View>
         {this.props.fields.map(field => {
-          return (
-            <Input
-              key={field.name}
-              {...field}
-              value={this.state.values[field.name]}
-              onChanged={(value: any) => this.fieldChanged(field.name, value)}
-            />
-          )
+          switch (field.type) {
+            default:
+              return (
+                <Input
+                  key={field.name}
+                  {...field}
+                  value={this.state.values[field.name]}
+                  onChanged={(value: any) =>
+                    this.fieldChanged(field.name, value)
+                  }
+                />
+              )
+          }
         })}
         {this.props.onSubmit && <Button onPress={this.onSubmit}>Submit</Button>}
       </View>

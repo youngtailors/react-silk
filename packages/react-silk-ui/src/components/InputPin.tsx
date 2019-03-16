@@ -1,5 +1,11 @@
-import * as React from 'react'
-import { View, StyleSheet } from 'react-native'
+import React from 'react'
+import {
+  View,
+  StyleSheet,
+  TextInputProps,
+  NativeSyntheticEvent,
+  TextInputChangeEventData,
+} from 'react-native'
 import { Input } from './Input'
 
 const styles = StyleSheet.create({
@@ -23,8 +29,7 @@ export interface Props {
 }
 
 export interface State {
-  refs: any
-  data: any
+  value: string
 }
 
 export class InputPin extends React.Component<Props, State> {
@@ -32,65 +37,72 @@ export class InputPin extends React.Component<Props, State> {
     length: 6,
   }
 
-  setRef: any
   onChanged: any
+  onChange: any
+  localRefs: Array<React.RefObject<TextInputProps>>
 
   constructor(props: Props) {
     super(props)
-    const refs: any = {}
+    const refs = []
+    let value = ''
     for (let i = 0; i < Number(props.length); i += 1) {
-      refs[i] = null
+      refs.push(React.createRef())
+      value += ' '
     }
+    this.localRefs = refs
     this.state = {
-      data: {},
-      refs,
+      value,
     }
 
-    this.setRef = (index: string, ref: any) => {
-      if (this.state.refs[index]) {
-        return
-      }
-      this.setState(prevState => ({
-        refs: { ...prevState.refs, [index]: ref },
-      }))
-    }
+    this.onChange = (
+      e: NativeSyntheticEvent<TextInputChangeEventData>,
+      index: number,
+    ) => {
+      const text = e.nativeEvent.text || ' '
 
-    this.onChanged = (index: string, text: string) => {
-      if (!text) {
-        return
-      }
       this.setState(
-        prevState => ({
-          data: { ...prevState.data, [index]: text[text.length - 1] },
-        }),
+        prevState => {
+          const newValue = `${prevState.value.substr(0, index)}${
+            text[text.length - 1]
+          }${prevState.value.substr(index + 1)}`
+          return {
+            value: newValue,
+          }
+        },
         () => {
           if (this.props.onChanged) {
-            let value: string = ''
-            for (let i = 0; i < Number(props.length); i += 1) {
-              value += this.state.data[i] || ' '
-            }
-            this.props.onChanged(value)
+            this.props.onChanged(this.state.value)
           }
         },
       )
-      if (Number(index) === Number(props.length) - 1) {
-        return
+      if ((e.nativeEvent as any).inputType === 'deleteContentBackward') {
+        if (this.localRefs[index - 1]) {
+          const node = this.localRefs[index - 1].current as any
+          if (node && node.focus) {
+            node.focus()
+          }
+        }
+      } else if (!!text.trim() && this.localRefs[index + 1]) {
+        const node = this.localRefs[index + 1].current as any
+        if (node && node.focus) {
+          node.focus()
+        }
       }
-      this.state.refs[Number(index) + 1].focus()
     }
   }
 
   render() {
     return (
       <View style={styles.container}>
-        {Object.keys(this.state.refs).map(index => (
+        {this.localRefs.map((ref, index) => (
           <Input
+            ref={ref}
             key={index}
+            selectTextOnFocus
             style={styles.input}
             inputStyle={styles.inputStyle}
-            setRef={ref => this.setRef(index, ref)}
-            onChange={text => this.onChanged(index, text)}
-            value={this.state.data[index] || ''}
+            onChange={e => this.onChange(e, index)}
+            value={this.state.value[index] || ''}
           />
         ))}
       </View>

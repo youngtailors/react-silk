@@ -15,7 +15,10 @@ export default React.memo(() => {
           {
             name: 'password',
             label: 'Password',
-            secureTextEntry: true,
+          },
+          {
+            name: 'Code',
+            label: 'Code',
           },
         ]}
         onSubmit={setFormValues}
