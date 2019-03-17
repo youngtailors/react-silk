@@ -1,6 +1,6 @@
 import React from 'react'
-import { View } from 'react-native'
-import { Input, Button, InputProps, InputPin } from 'react-silk-ui'
+import { View, StyleProp, ViewStyle, TextStyle } from 'react-native'
+import { Input, Button, InputProps, InputPin, ButtonProps } from 'react-silk-ui'
 
 export interface FormInputProps extends InputProps {
   name: string
@@ -12,7 +12,12 @@ export interface FormProps {
   }
   submitting?: boolean
   fields: Array<FormInputProps>
+  fieldStyles?: {
+    style?: StyleProp<ViewStyle>
+    inputStyle?: StyleProp<ViewStyle & TextStyle>
+  }
   onSubmit?: (values: { [key: string]: string }) => void
+  submitButton?: ButtonProps
 }
 
 export interface FormState {
@@ -66,6 +71,7 @@ export class Form extends React.PureComponent<FormProps, FormState> {
               return (
                 <InputPin
                   key={field.name}
+                  fieldStyles={this.props.fieldStyles}
                   onChanged={(value: any) =>
                     this.fieldChanged(field.name, value)
                   }
@@ -78,13 +84,16 @@ export class Form extends React.PureComponent<FormProps, FormState> {
           return (
             <Input
               key={field.name}
+              {...this.props.fieldStyles}
               {...inputProps}
               value={this.state.values[field.name]}
               onChanged={(value: any) => this.fieldChanged(field.name, value)}
             />
           )
         })}
-        {this.props.onSubmit && <Button onPress={this.onSubmit}>Submit</Button>}
+        {this.props.onSubmit && (
+          <Button onPress={this.onSubmit} {...this.props.submitButton}>Submit</Button>
+        )}
       </View>
     )
   }

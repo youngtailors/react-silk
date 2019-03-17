@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import {
   View,
   StyleSheet,
@@ -6,6 +6,7 @@ import {
   ViewStyle,
   StyleProp,
   TextInputProps,
+  TextStyle,
 } from 'react-native'
 import { Text } from './Text'
 import { Colors } from './Colors'
@@ -48,7 +49,7 @@ export interface InputProps extends TextInputProps {
   disabled?: boolean
   value?: string
   style?: StyleProp<ViewStyle>
-  inputStyle?: any
+  inputStyle?: StyleProp<ViewStyle & TextStyle>
   type?: 'text' | 'password' | 'pin'
   ref?: React.RefObject<TextInputProps>
 }

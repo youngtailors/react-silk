@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   button: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
@@ -156,6 +155,9 @@ export const Button = ({
     styles.buttonBorder,
     (styles as any)[`${variant}${ghost ? 'Ghost' : ''}Button`],
   ]
+  if (!block) {
+    buttonStyles.push(styles.containerNatural)
+  }
   const textStyles = []
   const isLightVariant = isLight(variant as string)
   if (ghost && isLightVariant) {
@@ -190,7 +192,7 @@ export const Button = ({
   }
 
   const node = (
-    <View style={[styles.button, ...buttonStyles]}>
+    <React.Fragment>
       {icon && (
         <Icon
           style={iconStyle}
@@ -200,20 +202,17 @@ export const Button = ({
         />
       )}
       <Text style={textStyles}>{children}</Text>
-    </View>
+    </React.Fragment>
   )
-  const containerStyles = []
-  if (!block) {
-    containerStyles.push(styles.containerNatural)
-  }
+
   if (onPress && !disabled) {
     return (
-      <TouchableOpacity onPress={onPress} style={containerStyles}>
+      <TouchableOpacity onPress={onPress} style={[styles.button, ...buttonStyles]}>
         {node}
       </TouchableOpacity>
     )
   }
-  return <View style={containerStyles}>{node}</View>
+  return <View style={[styles.button, ...buttonStyles]}>{node}</View>
 }
 
 Button.defaultProps = {

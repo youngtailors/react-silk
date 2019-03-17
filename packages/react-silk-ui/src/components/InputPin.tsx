@@ -1,6 +1,9 @@
 import React from 'react'
 import {
   View,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
   StyleSheet,
   TextInputProps,
   NativeSyntheticEvent,
@@ -14,13 +17,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   input: {
-    width: 40,
-    height: 40,
     marginRight: 5,
     marginBottom: 0,
   },
   inputStyle: {
     textAlign: 'center',
+    height: 40,
+    width: 40,
   },
 })
 
@@ -29,6 +32,10 @@ export interface InputPinProps {
   onChanged?: (arg: string) => void
   label?: string
   errorMessage?: string
+  fieldStyles?: {
+    style?: StyleProp<ViewStyle>
+    inputStyle?: StyleProp<ViewStyle & TextStyle>
+  }
 }
 
 export interface State {
@@ -95,6 +102,7 @@ export class InputPin extends React.Component<InputPinProps, State> {
   }
 
   render() {
+    const fieldStyles = this.props.fieldStyles || {}
     return (
       <View style={inputStyles.container}>
         {this.props.label && (
@@ -106,8 +114,8 @@ export class InputPin extends React.Component<InputPinProps, State> {
               ref={ref}
               key={index}
               selectTextOnFocus
-              style={styles.input}
-              inputStyle={styles.inputStyle}
+              style={[styles.input, fieldStyles.style]}
+              inputStyle={[styles.inputStyle, fieldStyles.inputStyle]}
               onChange={e => this.onChange(e, index)}
               value={this.state.value[index] || ''}
             />
