@@ -92,7 +92,9 @@ export class Form extends React.PureComponent<FormProps, FormState> {
           )
         })}
         {this.props.onSubmit && (
-          <Button onPress={this.onSubmit} {...this.props.submitButton}>Submit</Button>
+          <Button onPress={this.onSubmit} {...this.props.submitButton}>
+            Submit
+          </Button>
         )}
       </View>
     )

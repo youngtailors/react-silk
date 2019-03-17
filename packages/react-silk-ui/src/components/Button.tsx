@@ -207,7 +207,10 @@ export const Button = ({
 
   if (onPress && !disabled) {
     return (
-      <TouchableOpacity onPress={onPress} style={[styles.button, ...buttonStyles]}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={[styles.button, ...buttonStyles]}
+      >
         {node}
       </TouchableOpacity>
     )
