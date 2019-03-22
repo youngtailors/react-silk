@@ -116,7 +116,7 @@ const lightVariants = ['light', 'link']
 const isLight = (variant: string) => !~lightVariants.indexOf(variant)
 
 export interface ButtonProps {
-  children: String
+  children: String | React.ReactNode
   onPress?: () => void
   ghost?: boolean
   variant?:
@@ -191,6 +191,15 @@ export const Button = ({
     textStyles.push(textStyle)
   }
 
+  let innerNode
+  if (typeof children === 'string') {
+    innerNode = (
+      <Text style={textStyles}>{children}</Text>
+    )
+  } else {
+    innerNode = children
+  }
+
   const node = (
     <React.Fragment>
       {icon && (
@@ -201,7 +210,7 @@ export const Button = ({
           size={14}
         />
       )}
-      <Text style={textStyles}>{children}</Text>
+      {innerNode}
     </React.Fragment>
   )
 

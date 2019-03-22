@@ -1,11 +1,10 @@
 import * as React from 'react'
-import { Button } from '../Button'
+import { Button, ButtonProps } from '../Button'
 import iconMap from '../iconMap'
 
-export interface DropdownButtonProps {
+export interface DropdownButtonProps extends ButtonProps {
   isOpen: boolean
   toggle: () => void
-  children: string
 }
 
 export const DropdownButton = ({

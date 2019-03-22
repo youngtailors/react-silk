@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 })
 
 interface Props {
-  renderButton: (props: any) => React.ReactChildren
+  renderButton: (props: any) => React.ReactNode
 }
 interface State {
   open: boolean
