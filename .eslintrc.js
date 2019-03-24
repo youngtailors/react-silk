@@ -16,5 +16,6 @@ module.exports = {
     'typescript/no-var-requires': 'off',
     'typescript/interface-name-prefix': 'off',
     'no-bitwise': 'off',
+    'typescript/no-type-alias': 'off',
   },
 }

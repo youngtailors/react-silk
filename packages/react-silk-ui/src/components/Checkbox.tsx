@@ -1,8 +1,15 @@
-import * as React from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import React from 'react'
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  StyleProp,
+  ViewStyle,
+} from 'react-native'
 import { Text } from './Text'
-import sharedStyles from './sharedStyles'
-import { Colors } from './Colors'
+import { ThemeVariant } from '../types'
+import { useTheme } from './ThemeContext'
+import { variantToColor } from '../utils'
 
 const INDICATOR_SIZE = 20
 const styles = StyleSheet.create({
@@ -15,15 +22,10 @@ const styles = StyleSheet.create({
     width: INDICATOR_SIZE,
     height: INDICATOR_SIZE,
     borderWidth: 1,
-    borderColor: Colors.transparent,
-    backgroundColor: Colors.transparent,
     marginRight: 5,
   },
   circleIndicator: {
     borderRadius: INDICATOR_SIZE / 2,
-  },
-  disabledText: {
-    color: Colors.gray,
   },
 })
 
@@ -32,16 +34,7 @@ export interface Props {
   disabled?: boolean
   checked?: boolean
   children: string | React.ReactNode
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'info'
-    | 'light'
-    | 'dark'
-    | 'link'
+  variant?: ThemeVariant
   square?: boolean
 }
 
@@ -53,23 +46,37 @@ export const Checkbox = ({
   variant,
   square,
 }: Props) => {
-  const indicatorStyles = [styles.indicator]
+  const theme = useTheme()
+  const indicatorStyles: StyleProp<ViewStyle> = [styles.indicator]
   const textStyles = []
   if (!square) {
-    indicatorStyles.push((styles as any).circleIndicator)
+    indicatorStyles.push(styles.circleIndicator)
   }
   if (disabled) {
-    textStyles.push(styles.disabledText)
+    textStyles.push({
+      color: theme.colors.gray,
+    })
     if (checked) {
-      indicatorStyles.push((sharedStyles as any).grayBackground)
+      indicatorStyles.push({
+        backgroundColor: theme.colors.gray,
+        borderColor: theme.colors.gray,
+      })
     } else {
-      indicatorStyles.push((sharedStyles as any).grayBorder)
+      indicatorStyles.push({
+        borderColor: theme.colors.gray,
+      })
     }
   } else {
+    const themeColor = variantToColor(variant!, theme.colors)
     if (checked) {
-      indicatorStyles.push((sharedStyles as any)[`${variant}Background`])
+      indicatorStyles.push({
+        backgroundColor: themeColor,
+        borderColor: themeColor,
+      })
     } else {
-      indicatorStyles.push((sharedStyles as any)[`${variant}Border`])
+      indicatorStyles.push({
+        borderColor: themeColor,
+      })
     }
   }
 

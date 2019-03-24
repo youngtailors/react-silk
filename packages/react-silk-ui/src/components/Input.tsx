@@ -9,7 +9,7 @@ import {
   TextStyle,
 } from 'react-native'
 import { Text } from './Text'
-import { Colors } from './Colors'
+import { useTheme } from './ThemeContext'
 
 export const styles = StyleSheet.create({
   container: {
@@ -19,7 +19,6 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
   },
   textInput: {
-    borderColor: Colors.gray,
     borderWidth: 1,
     paddingVertical: 5,
     paddingHorizontal: 8,
@@ -27,17 +26,8 @@ export const styles = StyleSheet.create({
   disabledView: {
     paddingVertical: 5,
     paddingHorizontal: 8,
-    backgroundColor: Colors.smokeWhite,
     borderWidth: 1,
-    borderColor: Colors.smokeWhite,
     height: 33,
-  },
-  errorBorder: {
-    borderColor: Colors.danger,
-  },
-  errorMessage: {
-    color: Colors.danger,
-    fontSize: 14,
   },
 })
 
@@ -69,9 +59,21 @@ export const Input: React.SFC<InputProps> = React.forwardRef(
     }: InputProps,
     _ref: any,
   ) => {
-    const inputStyles = []
+    const theme = useTheme()
+    const inputStyles: StyleProp<ViewStyle> = [
+      {
+        borderColor: theme.colors.gray,
+      },
+    ]
+    const errorBorderStyle = {
+      borderColor: theme.colors.danger,
+    }
+    const errorMessageStyle = {
+      color: theme.colors.danger,
+      fontSize: 14,
+    }
     if (errorMessage) {
-      inputStyles.push(styles.errorBorder)
+      inputStyles.push(errorBorderStyle)
     }
     if (inputStyle) {
       inputStyles.push(inputStyle)
@@ -82,14 +84,22 @@ export const Input: React.SFC<InputProps> = React.forwardRef(
       <View style={[styles.container, style]}>
         {label && <Text style={styles.label}>{label}</Text>}
         {disabled ? (
-          <View style={[styles.disabledView, ...inputStyles]}>
+          <View
+            style={[
+              styles.disabledView,
+              ...inputStyles,
+              {
+                backgroundColor: theme.colors.smokeWhite,
+                borderColor: theme.colors.smokeWhite,
+              },
+            ]}
+          >
             <Text>{value || placeholder}</Text>
           </View>
         ) : (
           <TextInput
             ref={ref}
             editable
-            maxLength={40}
             style={[styles.textInput, ...inputStyles]}
             underlineColorAndroid="transparent"
             placeholder={placeholder}
@@ -98,9 +108,7 @@ export const Input: React.SFC<InputProps> = React.forwardRef(
             {...props}
           />
         )}
-        {errorMessage && (
-          <Text style={styles.errorMessage}>{errorMessage}</Text>
-        )}
+        {errorMessage && <Text style={errorMessageStyle}>{errorMessage}</Text>}
       </View>
     )
   },

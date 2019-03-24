@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { View, StyleSheet, Platform } from 'react-native'
 import { Hitbox } from './Hitbox'
-import { Colors } from './Colors'
 
 const styles = StyleSheet.create({
   container: {
@@ -15,7 +14,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,.8)',
   },
   modal: {
-    backgroundColor: Colors.white,
+    backgroundColor: '#FFF',
   },
   body: {
     padding: 15,

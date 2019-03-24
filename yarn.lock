@@ -13837,22 +13837,6 @@ react-native-web@^0.10.1:
     prop-types "^15.6.0"
     react-timer-mixin "^0.13.4"
 
-react-native-web@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.11.0.tgz#e89f4393c369471a35740a25d391a55cd1904db9"
-  integrity sha512-AbWtbyq9fb1mZDY71ziNbA5b+7JA06wmgUjq3pXTriXPsrMOrSfYpxOWcYzLN76Tcjpl2gRyzjBhGZMXWTXbVQ==
-  dependencies:
-    array-find-index "^1.0.2"
-    create-react-class "^15.6.2"
-    debounce "^1.2.0"
-    deep-assign "^3.0.0"
-    fbjs "^1.0.0"
-    hyphenate-style-name "^1.0.2"
-    inline-style-prefixer "^5.0.3"
-    normalize-css-color "^1.0.2"
-    prop-types "^15.6.0"
-    react-timer-mixin "^0.13.4"
-
 react-scripts@2.1.8:
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-2.1.8.tgz#21195bb928b2c0462aa98b2d32edf7d034cff2a9"
@@ -13914,11 +13898,6 @@ react-side-effect@^1.1.0:
   dependencies:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
-
-react-silk-ui@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/react-silk-ui/-/react-silk-ui-0.1.6.tgz#0248aa34f80738b7c59f87d3a60696a8c6f325ff"
-  integrity sha512-AOELhN3wPj2Ea0J3cPjg9uPj8AxL3i8dbeea+yV9MecuKWx8oBXYvZA1AHGebSf3840jFfZ3H3IZa8E5rAAFSg==
 
 react-test-renderer@^16.8.4:
   version "16.8.4"

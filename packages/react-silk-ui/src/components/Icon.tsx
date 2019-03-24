@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { View, Text, StyleProp, ViewStyle } from 'react-native'
 
 export interface Props {
@@ -15,11 +15,14 @@ let IconComponent = (props: Props) => {
     </View>
   )
 }
+
 export function installIconComponent(iconComponent: any) {
   IconComponent = iconComponent
 }
 
-export const Icon = (props: Props) => <IconComponent {...props} />
+export const Icon = (props: Props) => {
+  return <IconComponent {...props} />
+}
 
 Icon.defaultProps = {
   size: 24,
