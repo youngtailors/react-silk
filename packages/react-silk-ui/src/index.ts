@@ -15,8 +15,8 @@ import { Icon, installIconComponent } from './components/Icon'
 import { Dropdown } from './components/Dropdown'
 import { DropdownButton } from './components/Dropdown/Button'
 import { DropdownItem } from './components/Dropdown/Item'
-import { Colors } from './components/Colors'
 import { InputPin } from './components/InputPin'
+import { ThemeContext, ThemeColors, Colors } from './components/ThemeContext'
 
 export {
   Text,
@@ -37,9 +37,11 @@ export {
   DropdownButton,
   DropdownItem,
   InputPin,
+  ThemeContext,
   // Prop types
   InputProps,
   ButtonProps,
+  ThemeColors,
 }
 
 export default {
@@ -61,4 +63,5 @@ export default {
   DropdownButton,
   DropdownItem,
   InputPin,
+  ThemeContext,
 }

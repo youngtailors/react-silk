@@ -11,8 +11,13 @@ export const DropdownButton = ({
   isOpen,
   toggle,
   children,
+  ...props
 }: DropdownButtonProps) => (
-  <Button onPress={toggle} icon={isOpen ? iconMap.ArrowUp : iconMap.ArrowDown}>
+  <Button
+    onPress={toggle}
+    icon={isOpen ? iconMap.ArrowUp : iconMap.ArrowDown}
+    {...props}
+  >
     {children}
   </Button>
 )

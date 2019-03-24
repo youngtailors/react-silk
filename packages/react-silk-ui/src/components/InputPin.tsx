@@ -11,6 +11,7 @@ import {
 } from 'react-native'
 import { Input, styles as inputStyles } from './Input'
 import { Text } from './Text'
+import { ThemeConsumer } from './ThemeContext'
 
 const styles = StyleSheet.create({
   container: {
@@ -104,29 +105,38 @@ export class InputPin extends React.Component<InputPinProps, State> {
   render() {
     const fieldStyles = this.props.fieldStyles || {}
     return (
-      <View style={inputStyles.container}>
-        {this.props.label && (
-          <Text style={inputStyles.label}>{this.props.label}</Text>
+      <ThemeConsumer>
+        {theme => (
+          <View style={inputStyles.container}>
+            {this.props.label && (
+              <Text style={inputStyles.label}>{this.props.label}</Text>
+            )}
+            <View style={styles.container}>
+              {this.localRefs.map((ref, index) => (
+                <Input
+                  ref={ref}
+                  key={index}
+                  selectTextOnFocus
+                  style={[styles.input, fieldStyles.style]}
+                  inputStyle={[styles.inputStyle, fieldStyles.inputStyle]}
+                  onChange={e => this.onChange(e, index)}
+                  value={this.state.value[index] || ''}
+                />
+              ))}
+            </View>
+            {this.props.errorMessage && (
+              <Text
+                style={{
+                  color: theme.colors.danger,
+                  fontSize: 14,
+                }}
+              >
+                {this.props.errorMessage}
+              </Text>
+            )}
+          </View>
         )}
-        <View style={styles.container}>
-          {this.localRefs.map((ref, index) => (
-            <Input
-              ref={ref}
-              key={index}
-              selectTextOnFocus
-              style={[styles.input, fieldStyles.style]}
-              inputStyle={[styles.inputStyle, fieldStyles.inputStyle]}
-              onChange={e => this.onChange(e, index)}
-              value={this.state.value[index] || ''}
-            />
-          ))}
-        </View>
-        {this.props.errorMessage && (
-          <Text style={inputStyles.errorMessage}>
-            {this.props.errorMessage}
-          </Text>
-        )}
-      </View>
+      </ThemeConsumer>
     )
   }
 }

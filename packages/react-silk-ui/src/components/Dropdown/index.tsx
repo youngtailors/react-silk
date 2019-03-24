@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Hitbox } from '../Hitbox'
-import { Colors } from '../Colors'
 
 const styles = StyleSheet.create({
   dropdown: {
@@ -9,8 +8,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: Colors.smokeWhite,
-    backgroundColor: Colors.white,
+    borderColor: '#f4f4f4',
+    backgroundColor: '#FFFFFF',
   },
   upZ: {
     zIndex: 5,

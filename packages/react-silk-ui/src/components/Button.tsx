@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import {
   View,
   Text,
@@ -6,10 +6,12 @@ import {
   TouchableOpacity,
   ViewStyle,
   StyleProp,
+  TextStyle,
 } from 'react-native'
-import { Colors } from './Colors'
-import sharedStyles from './sharedStyles'
 import { Icon } from './Icon'
+import { useTheme } from './ThemeContext'
+import { ThemeVariant } from '../types'
+import { variantToColor, isLightVariant } from '../utils'
 
 const styles = StyleSheet.create({
   containerNatural: {
@@ -34,75 +36,6 @@ const styles = StyleSheet.create({
   disabledButton: {
     opacity: 0.6,
   },
-  primaryButton: {
-    backgroundColor: Colors.primary,
-    borderColor: Colors.primary,
-  },
-  secondaryButton: {
-    backgroundColor: Colors.secondary,
-    borderColor: Colors.secondary,
-  },
-  successButton: {
-    backgroundColor: Colors.success,
-    borderColor: Colors.success,
-  },
-  dangerButton: {
-    backgroundColor: Colors.danger,
-    borderColor: Colors.danger,
-  },
-  warningButton: {
-    backgroundColor: Colors.warning,
-    borderColor: Colors.warning,
-  },
-  infoButton: {
-    backgroundColor: Colors.info,
-    borderColor: Colors.info,
-  },
-  lightButton: {
-    backgroundColor: Colors.light,
-    borderColor: Colors.light,
-  },
-  darkButton: {
-    backgroundColor: Colors.dark,
-    borderColor: Colors.dark,
-  },
-  linkButton: {
-    backgroundColor: Colors.transparent,
-    borderColor: Colors.transparent,
-  },
-  primaryGhostButton: {
-    borderColor: Colors.primary,
-  },
-  secondaryGhostButton: {
-    borderColor: Colors.secondary,
-  },
-  successGhostButton: {
-    borderColor: Colors.success,
-  },
-  dangerGhostButton: {
-    borderColor: Colors.danger,
-  },
-  warningGhostButton: {
-    borderColor: Colors.warning,
-  },
-  infoGhostButton: {
-    borderColor: Colors.info,
-  },
-  lightGhostButton: {
-    borderColor: Colors.light,
-  },
-  darkGhostButton: {
-    borderColor: Colors.dark,
-  },
-  linkGhostButton: {
-    borderColor: Colors.transparent,
-  },
-  lightText: {
-    color: Colors.white,
-  },
-  darkText: {
-    color: Colors.black,
-  },
   buttonBorder: {
     borderWidth: 1,
   },
@@ -111,31 +44,18 @@ const styles = StyleSheet.create({
   },
 })
 
-const lightVariants = ['light', 'link']
-
-const isLight = (variant: string) => !~lightVariants.indexOf(variant)
-
 export interface ButtonProps {
   children: String | React.ReactNode
   onPress?: () => void
   ghost?: boolean
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'info'
-    | 'light'
-    | 'dark'
-    | 'link'
+  variant?: ThemeVariant
   disabled?: boolean
   block?: boolean
   icon?: string
   iconPosition?: 'left' | 'right'
   style?: StyleProp<ViewStyle>
-  iconStyle?: StyleProp<ViewStyle>
-  textStyle?: StyleProp<ViewStyle>
+  iconStyle?: StyleProp<ViewStyle & TextStyle>
+  textStyle?: StyleProp<ViewStyle & TextStyle>
 }
 
 export const Button = ({
@@ -151,19 +71,40 @@ export const Button = ({
   iconStyle,
   textStyle,
 }: ButtonProps) => {
-  const buttonStyles = [
-    styles.buttonBorder,
-    (styles as any)[`${variant}${ghost ? 'Ghost' : ''}Button`],
-  ]
+  const theme = useTheme()
+  const buttonStyles: Array<StyleProp<ViewStyle>> = [styles.buttonBorder]
+  const themeColor: string = variantToColor(variant!, theme.colors)
+
+  if (variant === 'link') {
+    buttonStyles.push({
+      borderWidth: 0,
+    })
+  } else {
+    if (ghost) {
+      buttonStyles.push({
+        borderColor: themeColor,
+      })
+    } else {
+      buttonStyles.push({
+        backgroundColor: themeColor,
+        borderColor: themeColor,
+      })
+    }
+  }
+
   if (!block) {
     buttonStyles.push(styles.containerNatural)
   }
-  const textStyles = []
-  const isLightVariant = isLight(variant as string)
-  if (ghost && isLightVariant) {
-    textStyles.push((sharedStyles as any)[`${variant}Text`])
+  const textStyles: Array<StyleProp<ViewStyle & TextStyle>> = []
+  const isLight = isLightVariant(variant!)
+  if (ghost && isLight) {
+    textStyles.push({
+      color: themeColor,
+    })
   } else {
-    textStyles.push(isLightVariant ? styles.lightText : styles.darkText)
+    textStyles.push({
+      color: isLight ? theme.colors.white : theme.colors.black,
+    })
   }
   if (disabled) {
     buttonStyles.push(styles.disabledButton)
@@ -193,9 +134,7 @@ export const Button = ({
 
   let innerNode
   if (typeof children === 'string') {
-    innerNode = (
-      <Text style={textStyles}>{children}</Text>
-    )
+    innerNode = <Text style={textStyles}>{children}</Text>
   } else {
     innerNode = children
   }
@@ -206,7 +145,7 @@ export const Button = ({
         <Icon
           style={iconStyle}
           name={icon}
-          color={isLightVariant ? Colors.white : Colors.black}
+          color={isLightVariant ? theme.colors.white : theme.colors.black}
           size={14}
         />
       )}
