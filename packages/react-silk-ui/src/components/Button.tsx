@@ -42,6 +42,10 @@ const styles = StyleSheet.create({
   hasRightIcon: {
     flexDirection: 'row-reverse',
   },
+  iconStyle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 })
 
 export interface ButtonProps {
@@ -56,6 +60,7 @@ export interface ButtonProps {
   style?: StyleProp<ViewStyle>
   iconStyle?: StyleProp<ViewStyle & TextStyle>
   textStyle?: StyleProp<ViewStyle & TextStyle>
+  iconSize?: number
 }
 
 export const Button = ({
@@ -70,6 +75,7 @@ export const Button = ({
   style,
   iconStyle,
   textStyle,
+  iconSize,
 }: ButtonProps) => {
   const theme = useTheme()
   const buttonStyles: Array<StyleProp<ViewStyle>> = [styles.buttonBorder]
@@ -113,7 +119,7 @@ export const Button = ({
   if (icon) {
     buttonStyles.push(styles.alignLeft)
   }
-  const iconStyles = []
+  const iconStyles: [StyleProp<ViewStyle & TextStyle>] = [styles.iconStyle]
   if (iconStyle) {
     iconStyles.push(iconStyle)
   }
@@ -142,12 +148,13 @@ export const Button = ({
   const node = (
     <React.Fragment>
       {icon && (
-        <Icon
-          style={iconStyle}
-          name={icon}
-          color={isLightVariant ? theme.colors.white : theme.colors.black}
-          size={14}
-        />
+        <View style={iconStyles}>
+          <Icon
+            name={icon}
+            color={isLightVariant ? theme.colors.white : theme.colors.black}
+            size={iconSize}
+          />
+        </View>
       )}
       {innerNode}
     </React.Fragment>
@@ -172,4 +179,5 @@ Button.defaultProps = {
   disabled: false,
   block: false,
   iconPosition: 'left',
+  iconSize: 14,
 }
