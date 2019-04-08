@@ -151,7 +151,7 @@ export const Button = ({
         <View style={iconStyles}>
           <Icon
             name={icon}
-            color={isLightVariant ? theme.colors.white : theme.colors.black}
+            color={isLight ? theme.colors.white : theme.colors.black}
             size={iconSize}
           />
         </View>
