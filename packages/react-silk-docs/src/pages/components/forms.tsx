@@ -18,9 +18,24 @@ export default React.memo(() => {
             type: 'password',
           },
           {
-            name: 'Code',
+            name: 'code',
             label: 'Pin code',
             type: 'pin',
+          },
+          {
+            name: 'gender',
+            label: 'Gender',
+            type: 'radio',
+            choices: [
+              {
+                key: 'male',
+                value: 'Male',
+              },
+              {
+                key: 'female',
+                value: 'Female',
+              },
+            ],
           },
         ]}
         onSubmit={setFormValues}

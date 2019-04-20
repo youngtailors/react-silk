@@ -20,10 +20,10 @@
     "test:coverage-ci": "jest --ci --runInBand --coverage --config \"./config/jest.config.js\""
   },
   "peerDependencies": {
-    "react": "^16.8.4",
-    "react-art": "^16.8.4",
-    "react-native-web": "^0.11.0",
-    "react-silk-ui": "^0.1.6"
+    "react": "^16.8.6",
+    "react-art": "^16.8.6",
+    "react-native-web": "^0.11.2",
+    "react-silk-ui": "^0.1.11"
   },
   "dependencies": {
     "react-silk-ui": "^0.1.11"

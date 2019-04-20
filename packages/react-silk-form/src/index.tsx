@@ -1,6 +1,14 @@
 import React from 'react'
 import { View, StyleProp, ViewStyle, TextStyle } from 'react-native'
-import { Input, Button, InputProps, InputPin, ButtonProps } from 'react-silk-ui'
+import {
+  Input,
+  Button,
+  InputProps,
+  InputPin,
+  ButtonProps,
+  Choices,
+  InputChoicesProps,
+} from 'react-silk-ui'
 
 export interface FormInputProps extends InputProps {
   name: string
@@ -11,7 +19,7 @@ export interface FormProps {
     [key: string]: string
   }
   submitting?: boolean
-  fields: Array<FormInputProps>
+  fields: Array<FormInputProps & InputChoicesProps>
   fieldStyles?: {
     style?: StyleProp<ViewStyle>
     inputStyle?: StyleProp<ViewStyle & TextStyle>
@@ -76,6 +84,17 @@ export class Form extends React.PureComponent<FormProps, FormState> {
                     this.fieldChanged(field.name, value)
                   }
                   label={field.label}
+                />
+              )
+            case 'radio':
+              return (
+                <Choices
+                  key={field.name}
+                  choices={field.choices}
+                  value={this.state.values[field.name]}
+                  onChanged={(value: any) =>
+                    this.fieldChanged(field.name, value)
+                  }
                 />
               )
             default:
