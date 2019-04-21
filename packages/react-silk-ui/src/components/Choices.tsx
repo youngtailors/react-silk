@@ -7,7 +7,7 @@ import {
   TextInputProps,
   TextStyle,
 } from 'react-native'
-import { Checkbox } from 'react-silk-ui'
+import { Checkbox } from './Checkbox'
 import { Text } from './Text'
 import { useTheme } from './ThemeContext'
 
