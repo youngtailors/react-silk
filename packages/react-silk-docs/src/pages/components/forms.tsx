@@ -37,6 +37,29 @@ export default React.memo(() => {
               },
             ],
           },
+          {
+            name: 'model',
+            label: 'Model',
+            type: 'checkbox',
+            choices: [
+              {
+                key: 'apple',
+                value: 'Apple',
+              },
+              {
+                key: 'dell',
+                value: 'Dell',
+              },
+              {
+                key: 'asus',
+                value: 'ASUS',
+              },
+              {
+                key: 'acer',
+                value: 'Acer',
+              },
+            ],
+          },
         ]}
         onSubmit={setFormValues}
       />

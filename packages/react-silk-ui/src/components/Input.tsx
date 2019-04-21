@@ -40,7 +40,7 @@ export interface InputProps extends TextInputProps {
   value?: string
   style?: StyleProp<ViewStyle>
   inputStyle?: StyleProp<ViewStyle & TextStyle>
-  type?: 'text' | 'password' | 'pin' | 'radio'
+  type?: 'text' | 'password' | 'pin' | 'radio' | 'checkbox'
   ref?: React.RefObject<TextInputProps>
 }
 

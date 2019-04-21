@@ -40,11 +40,9 @@ export interface InputChoicesProps {
 export const Choices: React.SFC<InputChoicesProps> = ({
   label,
   errorMessage,
-  disabled,
   onChanged,
   value,
   style,
-  inputStyle,
   choices,
   mutiple,
 }: InputChoicesProps) => {

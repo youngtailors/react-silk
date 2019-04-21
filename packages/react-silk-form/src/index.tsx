@@ -90,6 +90,20 @@ export class Form extends React.PureComponent<FormProps, FormState> {
               return (
                 <Choices
                   key={field.name}
+                  label={field.label}
+                  choices={field.choices}
+                  value={this.state.values[field.name]}
+                  onChanged={(value: any) =>
+                    this.fieldChanged(field.name, value)
+                  }
+                />
+              )
+            case 'checkbox':
+              return (
+                <Choices
+                  key={field.name}
+                  label={field.label}
+                  mutiple
                   choices={field.choices}
                   value={this.state.values[field.name]}
                   onChanged={(value: any) =>
