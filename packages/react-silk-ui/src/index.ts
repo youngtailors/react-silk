@@ -14,11 +14,13 @@ import { Checkbox } from './components/Checkbox'
 import { Icon, installIconComponent } from './components/Icon'
 import { Dropdown } from './components/Dropdown'
 import { DropdownButton } from './components/Dropdown/Button'
+import { Choices, InputChoicesProps } from './components/Choices'
 import { DropdownItem } from './components/Dropdown/Item'
 import { InputPin } from './components/InputPin'
 import { ThemeContext, ThemeColors, Colors } from './components/ThemeContext'
 
 export {
+  Choices,
   Text,
   Heading1,
   Heading2,
@@ -42,9 +44,11 @@ export {
   InputProps,
   ButtonProps,
   ThemeColors,
+  InputChoicesProps,
 }
 
 export default {
+  Choices,
   Text,
   Heading1,
   Heading2,

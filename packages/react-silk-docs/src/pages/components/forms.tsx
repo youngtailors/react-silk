@@ -18,9 +18,47 @@ export default React.memo(() => {
             type: 'password',
           },
           {
-            name: 'Code',
+            name: 'code',
             label: 'Pin code',
             type: 'pin',
+          },
+          {
+            name: 'gender',
+            label: 'Gender',
+            type: 'radio',
+            choices: [
+              {
+                key: 'male',
+                value: 'Male',
+              },
+              {
+                key: 'female',
+                value: 'Female',
+              },
+            ],
+          },
+          {
+            name: 'model',
+            label: 'Model',
+            type: 'checkbox',
+            choices: [
+              {
+                key: 'apple',
+                value: 'Apple',
+              },
+              {
+                key: 'dell',
+                value: 'Dell',
+              },
+              {
+                key: 'asus',
+                value: 'ASUS',
+              },
+              {
+                key: 'acer',
+                value: 'Acer',
+              },
+            ],
           },
         ]}
         onSubmit={setFormValues}
