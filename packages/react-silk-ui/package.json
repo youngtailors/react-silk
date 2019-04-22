@@ -1,6 +1,6 @@
 {
   "name": "react-silk-ui",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "license": "MIT",
   "main": "dist/react-silk-ui.js",
   "module": "dist/react-silk-ui.es.js",

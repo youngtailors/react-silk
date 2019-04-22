@@ -1,13 +1,13 @@
 {
   "name": "react-silk-example-admin",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "private": true,
   "dependencies": {
     "@types/react-dom": "^16.8.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8",
-    "react-silk-ui": "^0.1.11"
+    "react-silk-ui": "^0.1.12"
   },
   "scripts": {
     "dev": "BROWSER=none SKIP_PREFLIGHT_CHECK=true react-scripts start",
