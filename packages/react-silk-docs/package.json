@@ -22,7 +22,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-native-vector-icons": "^6.3.0",
-    "react-native-web": "^0.10.1",
+    "react-native-web": "^0.11.2",
     "react-silk-form": "^0.1.12",
     "react-silk-ui": "^0.1.12",
     "styled-components": "^4.1.3"

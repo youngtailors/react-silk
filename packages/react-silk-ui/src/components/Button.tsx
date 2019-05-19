@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   hasRightIcon: {
     flexDirection: 'row-reverse',
   },
-  iconStyle: {
+  iconStyleWrapper: {
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -119,15 +119,14 @@ export const Button = ({
   if (icon) {
     buttonStyles.push(styles.alignLeft)
   }
-  const iconStyles: [StyleProp<ViewStyle & TextStyle>] = [styles.iconStyle]
-  if (iconStyle) {
-    iconStyles.push(iconStyle)
-  }
+  const iconStyleWrapper: [StyleProp<ViewStyle & TextStyle>] = [
+    styles.iconStyleWrapper,
+  ]
   if (iconPosition === 'left') {
-    iconStyles.push(styles.iconLeft)
+    iconStyleWrapper.push(styles.iconLeft)
   } else if (iconPosition === 'right') {
     buttonStyles.push(styles.hasRightIcon)
-    iconStyles.push(styles.iconRight)
+    iconStyleWrapper.push(styles.iconRight)
   }
 
   if (style) {
@@ -148,10 +147,11 @@ export const Button = ({
   const node = (
     <React.Fragment>
       {icon && (
-        <View style={iconStyles}>
+        <View style={iconStyleWrapper}>
           <Icon
             name={icon}
             color={isLight ? theme.colors.white : theme.colors.black}
+            style={iconStyle}
             size={iconSize}
           />
         </View>
