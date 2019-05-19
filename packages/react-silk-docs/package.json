@@ -2,7 +2,7 @@
   "name": "react-silk-docs",
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "author": "Young Tailors <team@procolla.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
@@ -23,8 +23,8 @@
     "react-helmet": "^5.2.0",
     "react-native-vector-icons": "^6.3.0",
     "react-native-web": "^0.11.2",
-    "react-silk-form": "^0.1.12",
-    "react-silk-ui": "^0.1.12",
+    "react-silk-form": "^0.1.13",
+    "react-silk-ui": "^0.1.13",
     "styled-components": "^4.1.3"
   },
   "license": "MIT",

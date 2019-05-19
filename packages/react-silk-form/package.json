@@ -1,6 +1,6 @@
 {
   "name": "react-silk-form",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "license": "MIT",
   "main": "dist/react-silk-form.js",
   "module": "dist/react-silk-form.es.js",
@@ -25,6 +25,6 @@
     "react-native-web": "^0.11.2"
   },
   "dependencies": {
-    "react-silk-ui": "^0.1.12"
+    "react-silk-ui": "^0.1.13"
   }
 }
