@@ -1,0 +1,30 @@
+{
+  "name": "@react-silk/form",
+  "version": "0.1.13",
+  "license": "MIT",
+  "main": "dist/react-silk-form.js",
+  "module": "dist/react-silk-form.es.js",
+  "author": "Young Tailors <hello@youngtailors.com>",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "rollup -c",
+    "dev": "rollup -cw",
+    "tsc": "tsc",
+    "test": "jest --config \"./config/jest.config.js\"",
+    "test:watch": "jest --watch --config \"./config/jest.config.js\"",
+    "test:coverage": "jest --coverage --config \"./config/jest.config.js\"",
+    "test:coverage-ci": "jest --ci --runInBand --coverage --config \"./config/jest.config.js\""
+  },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-art": "^16.8.6",
+    "react-native-web": "^0.11.2"
+  },
+  "dependencies": {
+    "react-silk-ui": "^0.1.13"
+  }
+}

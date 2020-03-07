@@ -56,9 +56,9 @@ jobs:
           name: Run all tests with coverage
           command: yarn test:coverage-ci
       - codecov/upload:
-          file: ./packages/react-silk-ui/coverage/coverage-final.json
+          file: ./packages/ui/coverage/coverage-final.json
       - codecov/upload:
-          file: ./packages/react-silk-form/coverage/coverage-final.json
+          file: ./packages/form/coverage/coverage-final.json
 workflows:
   version: 2
   build_and_test:
