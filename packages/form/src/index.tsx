@@ -52,7 +52,7 @@ export class Form extends React.PureComponent<FormProps, FormState> {
     this.onSubmit = this.onSubmit.bind(this)
   }
 
-  fieldChanged(name: string, value: string) {
+  fieldChanged(name: string, value: string): void {
     this.setState(prevState => ({
       values: {
         ...prevState.values,
@@ -61,11 +61,13 @@ export class Form extends React.PureComponent<FormProps, FormState> {
     }))
   }
 
-  onSubmit() {
-    this.props.onSubmit!(this.state.values)
+  onSubmit(): void {
+    if (this.props.onSubmit) {
+      this.props.onSubmit(this.state.values)
+    }
   }
 
-  render() {
+  render(): React.ReactNode {
     return (
       <View>
         {this.props.fields.map(field => {
@@ -81,7 +83,7 @@ export class Form extends React.PureComponent<FormProps, FormState> {
                   label={field.label}
                   choices={field.choices}
                   value={this.state.values[field.name]}
-                  onChanged={(value: any) =>
+                  onChanged={(value: string): void =>
                     this.fieldChanged(field.name, value)
                   }
                 />
@@ -94,7 +96,7 @@ export class Form extends React.PureComponent<FormProps, FormState> {
                   mutiple
                   choices={field.choices}
                   value={this.state.values[field.name]}
-                  onChanged={(value: any) =>
+                  onChanged={(value: string): void =>
                     this.fieldChanged(field.name, value)
                   }
                 />
@@ -106,7 +108,9 @@ export class Form extends React.PureComponent<FormProps, FormState> {
                   {...this.props.fieldStyles}
                   {...inputProps}
                   value={this.state.values[field.name]}
-                  onChanged={(value: any) => this.fieldChanged(field.name, value)}
+                  onChanged={(value: string): void =>
+                    this.fieldChanged(field.name, value)
+                  }
                 />
               )
           }

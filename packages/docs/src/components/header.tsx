@@ -42,11 +42,11 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface Prop {
+export interface Props {
   siteTitle: string
 }
 
-const Header: React.FunctionComponent<Prop> = ({ siteTitle }) => (
+const Header: React.FunctionComponent<Props> = ({ siteTitle }: Props) => (
   <div>
     <Nav>
       <Brand to="/">

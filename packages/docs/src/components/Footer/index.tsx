@@ -9,5 +9,7 @@ const Wrapper = styled.footer.attrs({
   margin-top: 2rem;
   text-align: center;
 `
-
-export default () => <Wrapper>&copy; 2019 Young Tailors</Wrapper>
+const Footer: React.FunctionComponent = () => (
+  <Wrapper>&copy; 2020 Young Tailors</Wrapper>
+)
+export default Footer

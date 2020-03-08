@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   }
 `
 
-export default () => (
+const Dropdowns: React.FunctionComponent = () => (
   <MyMom>
     <Wrapper>
       <Dropdown
@@ -38,3 +38,5 @@ export default () => (
     </Wrapper>
   </MyMom>
 )
+
+export default Dropdowns

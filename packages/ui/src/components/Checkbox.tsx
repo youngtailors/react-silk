@@ -38,7 +38,7 @@ export interface Props {
   square?: boolean
 }
 
-export const Checkbox = ({
+export const Checkbox: React.FunctionComponent<Props> = ({
   disabled,
   onChange,
   checked,

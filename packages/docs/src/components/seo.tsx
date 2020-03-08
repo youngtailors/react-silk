@@ -1,9 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-export interface Prop {
+export interface Props {
   description?: string
   lang?: string
   keywords?: string[]
@@ -11,17 +10,39 @@ export interface Prop {
   meta?: any
 }
 
-const SEO: React.FunctionComponent<Prop> = ({
+const detailsQuery = graphql`
+  query DefaultSEOQuery {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+      }
+    }
+  }
+`
+
+interface SiteTitleQueryData {
+  site: {
+    siteMetadata: {
+      title: string
+      description: string
+      author: string
+    }
+  }
+}
+
+const SEO: React.FunctionComponent<Props> = ({
   description,
   lang,
   meta,
   keywords = [],
   title,
-}) => {
+}: Props) => {
   return (
     <StaticQuery
       query={detailsQuery}
-      render={data => {
+      render={(data: SiteTitleQueryData): React.ReactNode => {
         const metaDescription =
           description || data.site.siteMetadata.description
         return (
@@ -88,15 +109,3 @@ SEO.defaultProps = {
 }
 
 export default SEO
-
-const detailsQuery = graphql`
-  query DefaultSEOQuery {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-      }
-    }
-  }
-`

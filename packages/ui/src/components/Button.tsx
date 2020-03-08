@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 })
 
 export interface ButtonProps {
-  children: String | React.ReactNode
+  children: string | React.ReactNode
   onPress?: () => void
   ghost?: boolean
   variant?: ThemeVariant
@@ -63,7 +63,7 @@ export interface ButtonProps {
   iconSize?: number
 }
 
-export const Button = ({
+export const Button: React.FunctionComponent<ButtonProps> = ({
   children,
   onPress,
   variant,

@@ -8,7 +8,7 @@ export interface Props {
   style?: StyleProp<ViewStyle>
 }
 
-let IconComponent = (props: Props) => {
+let IconComponent: React.FunctionComponent<Props> = (props: Props) => {
   return (
     <View>
       <Text>{props.name}</Text>
@@ -16,11 +16,13 @@ let IconComponent = (props: Props) => {
   )
 }
 
-export function installIconComponent(iconComponent: any) {
+export function installIconComponent(
+  iconComponent: React.FunctionComponent,
+): void {
   IconComponent = iconComponent
 }
 
-export const Icon = (props: Props) => {
+export const Icon: React.FunctionComponent<Props> = (props: Props) => {
   return <IconComponent {...props} />
 }
 

@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   display: flex;
 `
 
-export default () => (
+const TextPage: React.FunctionComponent = () => (
   <MyMom>
     <Wrapper>
       <Heading1>This is heading 1</Heading1>
@@ -29,3 +29,5 @@ export default () => (
     </Wrapper>
   </MyMom>
 )
+
+export default TextPage

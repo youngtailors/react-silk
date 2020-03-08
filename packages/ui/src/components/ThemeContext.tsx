@@ -48,7 +48,7 @@ export const ThemeContext = React.createContext<ThemeProviderContext>(
   initialValue,
 )
 
-export function ThemeProvider(props: ThemeProviderProps) {
+export function ThemeProvider(props: ThemeProviderProps): React.ReactNode {
   return (
     <ThemeContext.Provider value={initialValue}>
       {props.children}
@@ -58,6 +58,6 @@ export function ThemeProvider(props: ThemeProviderProps) {
 
 export const ThemeConsumer = ThemeContext.Consumer
 
-export function useTheme() {
+export function useTheme(): ThemeProviderContext {
   return useContext(ThemeContext)
 }

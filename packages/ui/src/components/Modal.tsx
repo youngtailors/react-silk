@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { View, StyleSheet, Platform } from 'react-native'
+import { View, StyleSheet, Platform, StyleProp, ViewStyle } from 'react-native'
 import { Hitbox } from './Hitbox'
 
 const styles = StyleSheet.create({
@@ -24,11 +24,16 @@ const styles = StyleSheet.create({
 export interface Props {
   toggle: () => void
   isOpen: boolean
-  children: any
-  style: any
+  children: React.ReactNode
+  style: StyleProp<ViewStyle>
 }
 
-export const Modal = ({ toggle, isOpen, children, style }: Props) => {
+export const Modal: React.FunctionComponent<Props> = ({
+  toggle,
+  isOpen,
+  children,
+  style,
+}: Props) => {
   if (!isOpen) {
     return null
   }

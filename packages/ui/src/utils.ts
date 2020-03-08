@@ -41,5 +41,5 @@ export function variantToColor(
 
 const lightVariants = ['light', 'link']
 
-export const isLightVariant = (variant: ThemeVariant) =>
+export const isLightVariant = (variant: ThemeVariant): boolean =>
   !~lightVariants.indexOf(variant)

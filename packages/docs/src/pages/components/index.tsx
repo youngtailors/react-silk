@@ -1,10 +1,14 @@
 import React from 'react'
-
 import Layout from '../../components/Layout'
 import SEO from '../../components/seo'
 import Anchors from '../../components/Anchors'
 
-const ComponentsPage: React.FunctionComponent = ({ children }) => (
+interface ComponentsPageProps {
+  children: React.ReactNode
+}
+const ComponentsPage: React.FunctionComponent<ComponentsPageProps> = ({
+  children,
+}: ComponentsPageProps) => (
   <Layout>
     <SEO title="Components" keywords={[`gatsby`, `application`, `react`]} />
     <div className="row">

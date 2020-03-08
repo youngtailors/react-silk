@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export const Image = () => (
+export const Image: React.FunctionComponent = () => (
   <div>
     <svg
       id="a75d69e6-d07c-4db3-9c83-72b2470e5561"

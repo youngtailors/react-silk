@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { View, StyleSheet } from 'react-native'
+import React from 'react'
+import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native'
 import { Hitbox } from '../Hitbox'
 
 const styles = StyleSheet.create({
@@ -16,8 +16,13 @@ const styles = StyleSheet.create({
   },
 })
 
+interface RenderButtonProps {
+  isOpen: boolean
+  toggle: () => void
+}
+
 interface Props {
-  renderButton: (props: any) => React.ReactNode
+  renderButton: (props: RenderButtonProps) => React.ReactNode
 }
 interface State {
   open: boolean
@@ -27,10 +32,10 @@ interface State {
 }
 
 export class Dropdown extends React.Component<Props, State> {
-  _view: any
+  _view: React.Ref<HTMLDivElement>
   toggle: () => void
 
-  constructor(props: any) {
+  constructor(props: Props) {
     super(props)
     this.state = {
       open: false,
@@ -39,16 +44,23 @@ export class Dropdown extends React.Component<Props, State> {
       pageY: 0,
     }
     this._view = React.createRef()
-    this.toggle = () => {
+    this.toggle = (): void => {
       this.setState(prevState => ({
         open: !prevState.open,
       }))
     }
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     this._view.current.measure(
-      (x: any, y: any, width: any, height: any, pageX: any, pageY: any) => {
+      (
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        pageX: number,
+        pageY: number,
+      ) => {
         this.setState({
           height,
           pageX,
@@ -57,8 +69,9 @@ export class Dropdown extends React.Component<Props, State> {
       },
     )
   }
-  render() {
-    const dropdownStyles: [any] = [styles.dropdown]
+
+  render(): React.ReactNode {
+    const dropdownStyles: [StyleProp<ViewStyle>] = [styles.dropdown]
     const containerStyles = []
     if (this.state.open) {
       dropdownStyles.push({

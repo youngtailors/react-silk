@@ -20,7 +20,7 @@ const IconName = styled.span`
   font-size: 12px;
 `
 
-export default () => (
+const IconsDemo: React.FunctionComponent = () => (
   <div>
     {Object.keys(FAIcons).map(name => (
       <IconWrapper key={name}>
@@ -30,3 +30,5 @@ export default () => (
     ))}
   </div>
 )
+
+export default IconsDemo

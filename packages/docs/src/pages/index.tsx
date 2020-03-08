@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { Banner } from '../components/Banner'
 
-const IndexPage = () => (
+const IndexPage: React.FunctionComponent = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <Banner />

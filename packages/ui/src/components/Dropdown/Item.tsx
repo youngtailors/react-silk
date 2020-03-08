@@ -5,7 +5,10 @@ export interface DropdownItemProps {
   children: string
   icon?: string
 }
-export const DropdownItem = ({ children, icon }: DropdownItemProps) => (
+export const DropdownItem: React.FunctionComponent<DropdownItemProps> = ({
+  children,
+  icon,
+}: DropdownItemProps) => (
   <Button variant="link" icon={icon} iconPosition="left">
     {children}
   </Button>

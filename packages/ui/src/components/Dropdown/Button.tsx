@@ -7,7 +7,7 @@ export interface DropdownButtonProps extends ButtonProps {
   toggle: () => void
 }
 
-export const DropdownButton = ({
+export const DropdownButton: React.FunctionComponent<DropdownButtonProps> = ({
   isOpen,
   toggle,
   children,

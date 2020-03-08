@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome'
 import { installIconComponent } from '@react-silk/ui'
@@ -11,7 +10,21 @@ import './grid.css'
 
 installIconComponent(FontAwesome)
 
-const Layout: React.FunctionComponent = ({ children }) => (
+interface LayoutProps {
+  children: React.ReactNode
+}
+
+interface SiteTitleQueryData {
+  site: {
+    siteMetadata: {
+      title: string
+    }
+  }
+}
+
+const Layout: React.FunctionComponent<LayoutProps> = ({
+  children,
+}: LayoutProps) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -22,7 +35,7 @@ const Layout: React.FunctionComponent = ({ children }) => (
         }
       }
     `}
-    render={data => (
+    render={(data: SiteTitleQueryData): React.ReactNode => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
         <div className="container">{children}</div>
@@ -31,9 +44,5 @@ const Layout: React.FunctionComponent = ({ children }) => (
     )}
   />
 )
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
 
 export default Layout

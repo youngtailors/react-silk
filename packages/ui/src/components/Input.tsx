@@ -44,7 +44,7 @@ export interface InputProps extends TextInputProps {
   ref?: React.RefObject<TextInputProps>
 }
 
-export const Input: React.SFC<InputProps> = React.forwardRef(
+export const Input: React.FunctionComponent<InputProps> = React.forwardRef(
   (
     {
       label,
@@ -57,7 +57,7 @@ export const Input: React.SFC<InputProps> = React.forwardRef(
       inputStyle,
       ...props
     }: InputProps,
-    _ref: any,
+    _ref: React.Ref<HTMLDivElement>,
   ) => {
     const theme = useTheme()
     const inputStyles: StyleProp<ViewStyle> = [

@@ -7,7 +7,7 @@ const NavItems = styled.ul`
 `
 const NavItem = styled.li``
 
-export default () => (
+const Anchors: React.FunctionComponent = () => (
   <NavItems>
     <NavItem>
       <Link to="/components/text">Text</Link>
@@ -32,3 +32,5 @@ export default () => (
     </NavItem>
   </NavItems>
 )
+
+export default Anchors

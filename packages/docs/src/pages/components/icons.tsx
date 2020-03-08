@@ -2,8 +2,9 @@ import * as React from 'react'
 import MyMom from '.'
 import IconsDemo from '../../demo/IconsDemo'
 
-export default () => (
+const Icons: React.FunctionComponent = () => (
   <MyMom>
     <IconsDemo />
   </MyMom>
 )
+export default Icons

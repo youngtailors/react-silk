@@ -1,8 +1,8 @@
-import * as React from 'react'
+import React from 'react'
 import { Input, Checkbox } from '@react-silk/ui'
 import MyMom from '.'
 
-export default () => (
+const Inputs: React.FunctionComponent = () => (
   <MyMom>
     <Input label="First name" />
     <Input label="Last name" placeholder="Enter your last name" />
@@ -28,3 +28,5 @@ export default () => (
     </Checkbox>
   </MyMom>
 )
+
+export default Inputs

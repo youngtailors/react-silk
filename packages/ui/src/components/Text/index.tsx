@@ -32,50 +32,51 @@ const styles = StyleSheet.create({
   },
 })
 
-const SilkText: React.FunctionComponent<Props> = ({ style, ...props }) => (
-  <Text style={[styles.text, style]} {...props} />
-)
+const SilkText: React.FunctionComponent<Props> = ({
+  style,
+  ...props
+}: Props) => <Text style={[styles.text, style]} {...props} />
 
 export { SilkText as Text }
 
 export const Heading1: React.FunctionComponent<Props> = ({
   style,
   ...props
-}) => {
+}: Props) => {
   return <Text style={[styles.baseText, styles.h1, style]} {...props} />
 }
 
 export const Heading2: React.FunctionComponent<Props> = ({
   style,
   ...props
-}) => {
+}: Props) => {
   return <Text style={[styles.baseText, styles.h2, style]} {...props} />
 }
 
 export const Heading3: React.FunctionComponent<Props> = ({
   style,
   ...props
-}) => {
+}: Props) => {
   return <Text style={[styles.baseText, styles.h3, style]} {...props} />
 }
 
 export const Heading4: React.FunctionComponent<Props> = ({
   style,
   ...props
-}) => {
+}: Props) => {
   return <Text style={[styles.baseText, styles.h4, style]} {...props} />
 }
 
 export const Heading5: React.FunctionComponent<Props> = ({
   style,
   ...props
-}) => {
+}: Props) => {
   return <Text style={[styles.baseText, styles.h5, style]} {...props} />
 }
 
 export const Heading6: React.FunctionComponent<Props> = ({
   style,
   ...props
-}) => {
+}: Props) => {
   return <Text style={[styles.baseText, styles.h6, style]} {...props} />
 }

@@ -51,18 +51,18 @@ export const Choices: React.SFC<InputChoicesProps> = ({
     color: theme.colors.danger,
     fontSize: 14,
   }
-  const isChecked = (key: string) => {
+  const isChecked = (key: string): boolean => {
     if (!value) {
       return false
     }
-    const selectedKeys = value!.split(',')
+    const selectedKeys = value.split(',')
     return !!~selectedKeys.indexOf(key)
   }
 
-  const onCheckChange = (key: string) => {
+  const onCheckChange = (key: string): void => {
     if (onChanged) {
       if (value && mutiple) {
-        const selectedKeys = value!.split(',')
+        const selectedKeys = value.split(',')
         const newSelectedKeys = selectedKeys.filter(
           currentKey => currentKey !== key,
         )
@@ -84,7 +84,7 @@ export const Choices: React.SFC<InputChoicesProps> = ({
           key={choice.key}
           square={mutiple}
           checked={isChecked(choice.key)}
-          onChange={() => onCheckChange(choice.key)}
+          onChange={(): void => onCheckChange(choice.key)}
         >
           {choice.value}
         </Checkbox>

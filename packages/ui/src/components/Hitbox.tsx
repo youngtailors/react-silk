@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 interface Props {
   onPress: () => void
 }
-export const Hitbox = (props: Props) => (
+export const Hitbox: React.FunctionComponent<Props> = (props: Props) => (
   <TouchableWithoutFeedback onPress={props.onPress}>
     <View style={styles.container} />
   </TouchableWithoutFeedback>

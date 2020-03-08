@@ -10,7 +10,7 @@ export interface Props {
   postBodyComponents: any[]
 }
 
-const HTML: React.FunctionComponent<Props> = props => {
+const HTML: React.FunctionComponent<Props> = (props: Props) => {
   return (
     <html {...props.htmlAttributes}>
       <head>

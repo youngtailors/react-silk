@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   }
 `
 
-export default () => (
+const Buttons: React.FunctionComponent = () => (
   <MyMom>
     <Wrapper>
       <div>
@@ -110,3 +110,5 @@ export default () => (
     </Wrapper>
   </MyMom>
 )
+
+export default Buttons
